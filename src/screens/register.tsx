@@ -1,5 +1,10 @@
+import React from 'react'
 import { forEach } from 'lodash'
 import { Navigation } from 'react-native-navigation'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+
+import { store, persistor } from '../redux/store'
 
 import { Screens } from '.'
 
@@ -29,6 +34,16 @@ const screens = {
 
 export const registerScreens = () => {
   forEach(screens, (screen) => {
-    Navigation.registerComponent(screen.name, () => screen.component)
+    Navigation.registerComponent(
+      screen.name,
+      () => (props) => (
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <screen.component {...props} />
+          </PersistGate>
+        </Provider>
+      ),
+      () => screen.component
+    )
   })
 }
