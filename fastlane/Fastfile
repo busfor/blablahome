@@ -1,0 +1,39 @@
+fastlane_version "2.138.0"
+skip_docs
+default_platform :ios
+
+platform :ios do
+  desc "Distribute iOS app"
+  lane :distribute do
+    build_ios_app(
+      export_method: "app-store",
+      export_xcargs: "-allowProvisioningUpdates"
+    )
+    appcenter_upload(
+      owner_name: "i.sokolovskii",
+      owner_type: "user",
+      app_name: "BlaBlaHome-iOS",
+      file: ENV["RESULT_IPA"],
+      notify_testers: true,
+      destinations: "Collaborators,Testers"
+    )
+  end
+end
+
+platform :android do
+  desc "Distribute Android app"
+  lane :distribute do
+    build_android_app(
+      flavor: "assemble",
+      build_type: "release"
+    )
+    appcenter_upload(
+      owner_name: "i.sokolovskii",
+      owner_type: "user",
+      app_name: "BlaBlaHome-Android",
+      file: ENV["RESULT_APK"],
+      notify_testers: true,
+      destinations: "Collaborators,Testers"
+    )
+  end
+end
