@@ -6,7 +6,7 @@ platform :ios do
   desc "Distribute iOS app"
   lane :distribute do
     build_ios_app(
-      export_method: "app-store",
+      export_method: "ad-hoc",
       export_xcargs: "-allowProvisioningUpdates"
     )
     appcenter_upload(
