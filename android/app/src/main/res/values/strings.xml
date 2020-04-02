@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">BlaBlaHome</string>
+  <string name="app_name">BlaBlaHome</string>
+  <string name="facebook_app_id">506272830040644</string>
+  <string name="fb_login_protocol_scheme">fb506272830040644</string>
 </resources>
