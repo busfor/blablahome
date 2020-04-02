@@ -161,7 +161,6 @@
 				6C99D25CD6D05834AAE2D2A1 /* Pods-blablahome-tvOSTests.debug.xcconfig */,
 				6364ADF9587C7D7359EF48DB /* Pods-blablahome-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
