@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.blablahome"
+        applicationId "com.busfor.blablahome"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
