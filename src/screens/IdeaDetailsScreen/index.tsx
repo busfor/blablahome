@@ -4,18 +4,18 @@ import { Options } from 'react-native-navigation'
 
 import styles from './styles'
 
-const FeedScreen = () => (
+const IdeaDetailsScreen = () => (
   <SafeAreaView style={styles.container}>
-    <Text>Feed will be here soon!</Text>
+    <Text>Idea details will be here soon!</Text>
   </SafeAreaView>
 )
 
-FeedScreen.options = (): Options => ({
+IdeaDetailsScreen.options = (): Options => ({
   topBar: {
     title: {
-      text: 'Feed',
+      text: 'Idea Details',
     },
   },
 })
 
-export default FeedScreen
+export default IdeaDetailsScreen
