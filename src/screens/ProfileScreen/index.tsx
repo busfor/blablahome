@@ -2,6 +2,7 @@ import React from 'react'
 import { SafeAreaView, Text } from 'react-native'
 import { AccessToken, LoginButton } from 'react-native-fbsdk'
 import { Options } from 'react-native-navigation'
+import axios from 'axios'
 
 import styles from './styles'
 
@@ -18,8 +19,15 @@ const ProfileScreen = () => (
         } else {
           console.log(result)
           AccessToken.getCurrentAccessToken().then((data) => {
+            axios.post('https://blablahome.lazureykis.dev/api/users', {
+              access_token: data.accessToken.toString(),
+            }).then((response) => {
+              console.log('response', response)
+            })
             console.log(data)
             console.log(data.accessToken.toString())
+          }).catch((error) => {
+            console.log('error', error)
           })
         }
       }}
