@@ -12,8 +12,8 @@ export default StyleSheet.create({
   },
 
   container: {
-    paddingTop: 20,
-    paddingBottom: 20 + BUTTON_HEIGHT,
+    paddingTop: 16,
+    paddingBottom: 16 + BUTTON_HEIGHT,
   },
 
   user: {
