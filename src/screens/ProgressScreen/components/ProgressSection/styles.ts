@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
 
   section: {
-    padding: 16,
+    paddingHorizontal: 16,
     marginTop: 24,
   },
 })

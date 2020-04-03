@@ -1,23 +1,27 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { Options } from 'react-native-navigation'
+import { useNavigationButtonPress, useNavigationComponentDidAppear } from 'react-native-navigation-hooks'
 
-import { AppNavigation } from '../../navigation'
+import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { Screens } from '..'
 import { fetchActivities } from '../../Api'
 import { Activity } from '../../AppPropTypes'
+import { CreateActivityStep } from '../CreateActivityScreen/types'
 
 import Presenter from './presenter'
 
-const ActivitiesScreen = () => {
+const CREATE_BUTTON_ID = 'create_activity'
+
+const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
   const [loading, setLoading] = useState(false)
   const [activities, setActivities] = useState<Activity[]>([])
+  const firstAppear = useRef(true)
 
   useEffect(() => {
     handleRefresh()
   }, [])
 
-  const handleRefresh = useCallback(() => {
-    setLoading(true)
+  const fetchData = useCallback(() => {
     fetchActivities()
       .then((response) => {
         setActivities(response.data)
@@ -26,7 +30,12 @@ const ActivitiesScreen = () => {
       .catch(() => {
         setLoading(false)
       })
-  })
+  }, [])
+
+  const handleRefresh = useCallback(() => {
+    setLoading(true)
+    fetchData()
+  }, [fetchData])
 
   const onPressActivity = useCallback((activity: Activity) => {
     AppNavigation.showModal({
@@ -45,6 +54,34 @@ const ActivitiesScreen = () => {
     })
   }, [])
 
+  useNavigationButtonPress(
+    () => {
+      AppNavigation.showModal({
+        stack: {
+          children: [
+            {
+              component: {
+                name: Screens.createActivityScreen,
+                passProps: {
+                  step: CreateActivityStep.title,
+                },
+              },
+            },
+          ],
+        },
+      })
+    },
+    componentId,
+    CREATE_BUTTON_ID
+  )
+
+  useNavigationComponentDidAppear(() => {
+    if (!firstAppear.current) {
+      fetchData()
+    }
+    firstAppear.current = false
+  }, componentId)
+
   return <Presenter {...{ activities, onPressActivity, handleRefresh, loading }} />
 }
 
@@ -53,6 +90,7 @@ ActivitiesScreen.options = (): Options => ({
     title: {
       text: 'Activities',
     },
+    rightButtons: [{ id: CREATE_BUTTON_ID, text: 'Create' }],
   },
 })
 

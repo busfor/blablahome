@@ -1,3 +1,5 @@
+export { default as Button } from './Button'
+export { default as KeyboardView } from './KeyboardView'
 export { default as Touchable } from './Touchable'
 export { default as ParticipantsCount } from './ParticipantsCount'
 export { default as User } from './User'

@@ -19,9 +19,9 @@
 		51738C3BCC4E6676F4BBB0FE /* libPods-blablahome-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B385F76572743C3CD3FE318 /* libPods-blablahome-tvOS.a */; };
 		8AA42915595B8D85D71BBBF8 /* libPods-blablahome-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1A7B1B10DC670C8AADE45D /* libPods-blablahome-tvOSTests.a */; };
 		BBA1476E8BC97F9C6F489FD9 /* libPods-blablahome.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB03E4AF5182D68716A0C31C /* libPods-blablahome.a */; };
+		DD697E18C8254D2BAF6B45CB /* GTEestiProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */; };
 		E149B0EC4E76E5AB6B3F470F /* libPods-blablahome-blablahomeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 099B79E8E31C543749E2998F /* libPods-blablahome-blablahomeTests.a */; };
 		FD3CB56D77FC4D0DAC912DDE /* GTEestiProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */; };
-		DD697E18C8254D2BAF6B45CB /* GTEestiProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +54,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = blablahome/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = blablahome/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = blablahome/main.m; sourceTree = "<group>"; };
+		21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "GTEestiProDisplay-Medium.ttf"; path = "../assets/fonts/GTEestiProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		26B290EC179324D611D0F4CE /* Pods-blablahome-blablahomeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blablahome-blablahomeTests.debug.xcconfig"; path = "Target Support Files/Pods-blablahome-blablahomeTests/Pods-blablahome-blablahomeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2B385F76572743C3CD3FE318 /* libPods-blablahome-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blablahome-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* blablahome-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "blablahome-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* blablahome-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "blablahome-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "GTEestiProDisplay-Regular.ttf"; path = "../assets/fonts/GTEestiProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		5D04850328FEBFB2DAD5BB03 /* Pods-blablahome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blablahome.release.xcconfig"; path = "Target Support Files/Pods-blablahome/Pods-blablahome.release.xcconfig"; sourceTree = "<group>"; };
 		6364ADF9587C7D7359EF48DB /* Pods-blablahome-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blablahome-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-blablahome-tvOSTests/Pods-blablahome-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C99D25CD6D05834AAE2D2A1 /* Pods-blablahome-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blablahome-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-blablahome-tvOSTests/Pods-blablahome-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,8 +71,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE1A7B1B10DC670C8AADE45D /* libPods-blablahome-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blablahome-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */ = {isa = PBXFileReference; name = "GTEestiProDisplay-Medium.ttf"; path = "../assets/fonts/GTEestiProDisplay-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */ = {isa = PBXFileReference; name = "GTEestiProDisplay-Regular.ttf"; path = "../assets/fonts/GTEestiProDisplay-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +140,16 @@
 			name = blablahome;
 			sourceTree = "<group>";
 		};
+		1654E57E9B4A45ACB3CAA41D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */,
+				2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,16 +211,6 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
-		};
-		1654E57E9B4A45ACB3CAA41D /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */,
-				2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -402,10 +402,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-blablahome-blablahomeTests/Pods-blablahome-blablahomeTests-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -500,10 +504,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-blablahome/Pods-blablahome-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

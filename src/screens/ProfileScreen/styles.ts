@@ -6,11 +6,14 @@ import colors from '../../colors'
 const BUTTON_HEIGHT = 50
 
 export default StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
+  },
+
+  container: {
+    padding: 20,
     paddingBottom: 20 + BUTTON_HEIGHT,
-    paddingTop: 20,
   },
 
   user: {

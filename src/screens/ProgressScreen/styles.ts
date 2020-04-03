@@ -4,20 +4,16 @@ import colors from '../../colors'
 import { FontFamily } from '../../constants/fonts'
 
 export default StyleSheet.create({
-  container: {
+  safeArea: {
     backgroundColor: colors.backgroundColor,
     flex: 1,
-    padding: 16,
   },
 
   title: {
     fontSize: 40,
     fontFamily: FontFamily.medium,
-    margin: 8,
-  },
-
-  participations: {
-    marginHorizontal: -16,
-    marginBottom: -16,
+    paddingTop: 16,
+    paddingBottom: 8,
+    paddingHorizontal: 16,
   },
 })
