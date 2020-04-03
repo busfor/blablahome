@@ -22,7 +22,7 @@ export default memo(({ name, days, participantsCount, completedCount, descriptio
         <User user={user} />
       </View>
       <View style={styles.headerContainer}>
-        <Text style={styles.header}>LIST OF PARTICIPANTS</Text>
+        <Text style={styles.header}>PARTICIPANTS {participants.length > 0 && participants.length}</Text>
       </View>
       {participants.map((participant, index) => (
         <View
