@@ -1,14 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Options } from 'react-native-navigation'
 import { useNavigationButtonPress } from 'react-native-navigation-hooks'
+import { noop } from 'lodash'
 
-import { Activity } from '../../AppPropTypes'
+import { Activity, Participation } from '../../AppPropTypes'
 import { modalBackButton, AppNavigationProps, AppNavigation } from '../../navigation/index'
+import { fetchParticipations } from '../../Api'
 
 import Presenter from './presenter'
 
 const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & ActivityDetailsScreenProps) => {
-  const { title, frequency, completed: completedCount, description, author, participants } = activity
+  const {
+    id,
+    name,
+    days,
+    completions_count: completedCount,
+    description,
+    user,
+    participants_count: participantsCount,
+  } = activity
+
+  const [participants, setParticipants] = useState<Participation[]>([])
+
+  useEffect(() => {
+    fetchParticipations(id)
+      .then((response) => {
+        setParticipants(response.data)
+      })
+      .catch(noop)
+  }, [])
 
   useNavigationButtonPress(
     () => {
@@ -21,12 +41,12 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
   return (
     <Presenter
       {...{
-        title,
-        frequency,
-        participantsCount: participants.length,
+        name,
+        days,
+        participantsCount,
         completedCount,
         description,
-        author,
+        user,
         participants,
       }}
     />
