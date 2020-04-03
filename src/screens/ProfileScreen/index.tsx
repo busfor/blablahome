@@ -12,6 +12,7 @@ import Presenter from './presenter'
 const ProfileScreen = () => {
   const dispatch = useDispatch()
   const profile = useSelector((s: RootState) => s.auth)
+
   const handleLogin = useCallback(async () => {
     try {
       const result = await LoginManager.logInWithPermissions(['public_profile'])

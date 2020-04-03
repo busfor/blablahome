@@ -2,11 +2,14 @@ import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../constants/fonts'
 
+const BUTTON_HEIGHT = 50
+
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E5E5E5',
     padding: 20,
+    paddingBottom: 20 + BUTTON_HEIGHT,
   },
 
   user: {
@@ -30,8 +33,8 @@ export default StyleSheet.create({
   },
 
   fbButton: {
-    width: 200,
-    height: 50,
+    width: BUTTON_HEIGHT * 4,
+    height: BUTTON_HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFF',
