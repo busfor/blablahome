@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-var mock = new MockAdapter(axios)
-
 export const BASE_API_URL = 'https://blablahome.lazureykis.dev/api'
+
+const mock = new MockAdapter(axios)
 
 mock.onGet(`${BASE_API_URL}/activities`).reply(200, [
   {
