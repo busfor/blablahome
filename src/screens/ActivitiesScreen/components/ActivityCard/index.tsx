@@ -21,7 +21,7 @@ export default memo(({ title, frequency, participantsCount, completedCount, auth
 
 interface Props {
   title: string
-  frequency: string
+  frequency: number
   participantsCount: number
   completedCount: number
   author: string

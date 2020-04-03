@@ -10,14 +10,15 @@ export interface Picture {
 }
 
 export interface Activity {
-  id: number
-  author: User
-  title: string
+  id: string
+  user: User
+  name: string
   description: string
-  pictures?: Picture[]
-  participants: User[]
-  completed: number
-  frequency: string
+  cover: string
+  participants_count: number
+  completions_count: number
+  fails_count: number
+  days: number
 }
 
 export interface Comment {
@@ -29,7 +30,7 @@ export interface Comment {
 export interface Commitment {
   id: number
   user: User
-  idea: Idea
+  activity: Activity
   estimate?: Date
   comments: Comment[]
 }
