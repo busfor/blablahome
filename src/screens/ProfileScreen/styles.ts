@@ -9,8 +9,8 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
-    padding: 20,
     paddingBottom: 20 + BUTTON_HEIGHT,
+    paddingTop: 20,
   },
 
   user: {
@@ -18,6 +18,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 4,
+    paddingHorizontal: 20,
   },
 
   avatar: {
@@ -47,6 +48,5 @@ export default StyleSheet.create({
   countersContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
   },
 })

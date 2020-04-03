@@ -1,3 +1,5 @@
 export { default as Touchable } from './Touchable'
 export { default as ParticipantsCount } from './ParticipantsCount'
 export { default as User } from './User'
+export { default as Achievement } from './Achievement'
+export { default as Section } from './Section'

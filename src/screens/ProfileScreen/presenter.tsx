@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { View, Text } from 'react-native'
 
-import { Touchable, ParticipantsCount } from '../../component'
+import { Touchable, ParticipantsCount, Section, Achievement } from '../../component'
 
 import styles from './styles'
 
@@ -23,12 +23,21 @@ export default memo(({ loggedIn, username, handleLogin, handleLogout }: Props) =
         <Text style={styles.username}>{formatName(username || '')}</Text>
         <View style={styles.avatar} />
       </View>
-      <View style={styles.countersContainer}>
-        <ParticipantsCount count={15} description='Joins' />
-        <ParticipantsCount count={8} description='Successes' />
-        <ParticipantsCount count={7} description='Fails' />
-        <ParticipantsCount count={32} description='Check-ins' />
-      </View>
+      <Section title='ACTIVITIES'>
+        <View style={styles.countersContainer}>
+          <ParticipantsCount count={15} description='Joins' />
+          <ParticipantsCount count={8} description='Successes' />
+          <ParticipantsCount count={7} description='Fails' />
+          <ParticipantsCount count={32} description='Check-ins' />
+        </View>
+      </Section>
+      <Section title='ACHIEVEMENTS'>
+        <View>
+          <Achievement title='Athlete: 5 streak weekly sports activities' points={25} />
+          <Achievement title='Waterlover: 2 activities completed' points={10} />
+          <Achievement title='Joining BlaBlaHome' points={5} />
+        </View>
+      </Section>
       <Touchable onPress={handleLogout} style={styles.fbButton}>
         <Text>Logout</Text>
       </Touchable>

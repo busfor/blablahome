@@ -1,10 +1,8 @@
 import React, { memo } from 'react'
-import { View, Text } from 'react-native'
 
 import { Participation } from '../../../../AppPropTypes'
 import ProgressCard from '../ProgressCard'
-
-import styles from './styles'
+import { Section } from '../../../../component'
 
 export default memo(({ participations, title }: Props) => {
   if (participations.length === 0) {
@@ -12,8 +10,7 @@ export default memo(({ participations, title }: Props) => {
   }
 
   return (
-    <View style={styles.section}>
-      <Text style={styles.sectionHeader}>{title}</Text>
+    <Section {...{ title }}>
       {participations.map((participation) => (
         <ProgressCard
           key={participation.id}
@@ -24,7 +21,7 @@ export default memo(({ participations, title }: Props) => {
           }}
         />
       ))}
-    </View>
+    </Section>
   )
 })
 
