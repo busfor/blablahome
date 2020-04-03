@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { Text, ScrollView, SafeAreaView } from 'react-native'
 
 import { Participation } from '../../AppPropTypes'
 
@@ -7,14 +7,14 @@ import styles from './styles'
 import ProgressSection from './components/ProgressSection'
 
 export default memo(({ inProgress, completed, failed }: Props) => (
-  <View style={styles.container}>
+  <SafeAreaView style={styles.safeArea}>
     <Text style={styles.title}>Progress</Text>
-    <ScrollView style={styles.participations}>
+    <ScrollView>
       <ProgressSection participations={inProgress} title='STARTED' />
       <ProgressSection participations={completed} title='COMPLETED' />
       <ProgressSection participations={failed} title='FAILED' />
     </ScrollView>
-  </View>
+  </SafeAreaView>
 ))
 
 interface Props {

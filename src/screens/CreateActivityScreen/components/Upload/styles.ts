@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../../../constants/fonts'
+import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ export default StyleSheet.create({
   },
 
   touchable: {
-    backgroundColor: '#F6F5F5',
+    backgroundColor: colors.backgroundColor,
     width: '100%',
     height: 220,
     borderWidth: 1,

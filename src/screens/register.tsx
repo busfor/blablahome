@@ -35,6 +35,7 @@ const screens = {
   progressScreen: {
     name: Screens.progressScreen,
     component: ProgressScreen,
+  },
   createActivityScreen: {
     name: Screens.createActivityScreen,
     component: CreateActivityScreen,

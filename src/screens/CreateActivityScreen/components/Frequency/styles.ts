@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../../../constants/fonts'
+import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
@@ -11,11 +12,11 @@ export default StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 12,
     height: 64,
-    backgroundColor: '#F6F5F5',
+    backgroundColor: colors.backgroundColor,
     justifyContent: 'center',
     paddingHorizontal: 20,
     borderWidth: 2,
-    borderColor: '#F6F5F5',
+    borderColor: colors.backgroundColor,
     borderRadius: 8,
   },
 
@@ -26,6 +27,6 @@ export default StyleSheet.create({
   label: {
     fontFamily: FontFamily.regular,
     fontSize: 18,
-    color: '#000000',
+    color: colors.black,
   },
 })

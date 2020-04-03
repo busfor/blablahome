@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useMemo } from 'react'
-import { SafeAreaView, View, Platform, Alert } from 'react-native'
+import { SafeAreaView, View, Platform, Alert, Text } from 'react-native'
 import { Options, Layout } from 'react-native-navigation'
 import { useNavigationButtonPress } from 'react-native-navigation-hooks'
 import { Image as ImagePickerImage } from 'react-native-image-crop-picker'
@@ -107,15 +107,15 @@ const CreateActivityScreen = ({
         },
       }
 
-      console.log(options)
-
       const uploadId = await BackgroundUpload.startUpload(options)
       BackgroundUpload.addListener('progress', uploadId, (data) => setProgress(data.progress))
       BackgroundUpload.addListener('error', uploadId, () => setUploading(false))
       BackgroundUpload.addListener('cancelled', uploadId, () => setUploading(false))
       BackgroundUpload.addListener('completed', uploadId, (data) => {
         setUploading(false)
-        console.log('Completed!', data)
+        if (data.responseCode === 201) {
+          AppNavigation.dismissAllModals()
+        }
       })
     } catch {
       setUploading(false)
@@ -159,8 +159,6 @@ const CreateActivityScreen = ({
     }
   }, [title, description, selectedImage, selectedFrequency, step, openNextStep, submit])
 
-  console.log(progress)
-
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardView modal enabled={keyboardViewEnabled}>
@@ -185,6 +183,12 @@ const CreateActivityScreen = ({
               <Button onPress={onPressSubmit} title='Next' />
             </View>
           </>
+        )}
+        {uploading && (
+          <View style={styles.uploadingContainer}>
+            <Text style={styles.progress}>{progress}%</Text>
+            <Text style={styles.uploading}>Uploading...</Text>
+          </View>
         )}
       </KeyboardView>
     </SafeAreaView>
