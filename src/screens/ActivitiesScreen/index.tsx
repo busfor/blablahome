@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { Options } from 'react-native-navigation'
-import { useNavigationButtonPress } from 'react-native-navigation-hooks/dist'
+import { useNavigationButtonPress, useNavigationComponentDidAppear } from 'react-native-navigation-hooks'
 
 import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { Screens } from '..'
@@ -13,6 +13,47 @@ import Presenter from './presenter'
 const CREATE_BUTTON_ID = 'create_activity'
 
 const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
+  const [loading, setLoading] = useState(false)
+  const [activities, setActivities] = useState<Activity[]>([])
+  const firstAppear = useRef(true)
+
+  useEffect(() => {
+    handleRefresh()
+  }, [])
+
+  const fetchData = useCallback(() => {
+    fetchActivities()
+      .then((response) => {
+        setActivities(response.data)
+        setLoading(false)
+      })
+      .catch(() => {
+        setLoading(false)
+      })
+  }, [])
+
+  const handleRefresh = useCallback(() => {
+    setLoading(true)
+    fetchData()
+  }, [fetchData])
+
+  const onPressActivity = useCallback((activity: Activity) => {
+    AppNavigation.showModal({
+      stack: {
+        children: [
+          {
+            component: {
+              name: Screens.ActivityDetailsScreen,
+              passProps: {
+                activity,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }, [])
+
   useNavigationButtonPress(
     () => {
       AppNavigation.showModal({
@@ -34,41 +75,12 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
     CREATE_BUTTON_ID
   )
 
-  const [loading, setLoading] = useState(false)
-  const [activities, setActivities] = useState<Activity[]>([])
-
-  useEffect(() => {
-    handleRefresh()
-  }, [])
-
-  const handleRefresh = useCallback(() => {
-    setLoading(true)
-    fetchActivities()
-      .then((response) => {
-        setActivities(response.data)
-        setLoading(false)
-      })
-      .catch(() => {
-        setLoading(false)
-      })
-  }, [])
-
-  const onPressActivity = useCallback((activity: Activity) => {
-    AppNavigation.showModal({
-      stack: {
-        children: [
-          {
-            component: {
-              name: Screens.ActivityDetailsScreen,
-              passProps: {
-                activity,
-              },
-            },
-          },
-        ],
-      },
-    })
-  }, [])
+  useNavigationComponentDidAppear(() => {
+    if (!firstAppear.current) {
+      fetchData()
+    }
+    firstAppear.current = false
+  }, componentId)
 
   return <Presenter {...{ activities, onPressActivity, handleRefresh, loading }} />
 }

@@ -3,6 +3,7 @@ import { Text, View, ScrollView } from 'react-native'
 
 import { User as UserType, Participation as ParticipationType } from '../../AppPropTypes'
 import { ParticipantsCount, User } from '../../component'
+import { getFrequency } from '../../constants/frequency'
 
 import styles from './styles'
 import Participation from './Components/Participation'
@@ -11,7 +12,7 @@ export default memo(({ name, days, participantsCount, completedCount, descriptio
   <View style={styles.container}>
     <View style={styles.topContainer}>
       <Text style={styles.title}>{name}</Text>
-      <Text style={styles.frequency}>{days}</Text>
+      <Text style={styles.frequency}>{getFrequency(days)}</Text>
     </View>
     <ScrollView style={styles.content}>
       <View style={styles.countersContainer}>

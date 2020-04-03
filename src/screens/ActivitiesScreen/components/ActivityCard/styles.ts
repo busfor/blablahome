@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
 
   spacing: {
-    marginBottom: 20,
+    marginBottom: 16,
   },
 
   author: {

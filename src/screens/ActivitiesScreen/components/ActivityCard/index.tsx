@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { View, Text } from 'react-native'
 
 import { Touchable, ParticipantsCount } from '../../../../component'
+import { getFrequency } from '../../../../constants/frequency'
 
 import styles from './styles'
 
@@ -10,7 +11,7 @@ export default memo(({ title, frequency, participantsCount, completedCount, auth
     <Text style={styles.author}>{author}</Text>
     <View style={styles.infoContainer}>
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.frequency}>{frequency}</Text>
+      <Text style={styles.frequency}>{getFrequency(frequency)}</Text>
       <View style={styles.countersContainer}>
         <ParticipantsCount count={participantsCount} description='Participants' />
         <ParticipantsCount count={completedCount} description='Completions' />

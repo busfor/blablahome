@@ -5,6 +5,7 @@ import { useNavigationButtonPress } from 'react-native-navigation-hooks'
 import { Image as ImagePickerImage } from 'react-native-image-crop-picker'
 import { useSelector } from 'react-redux'
 import BackgroundUpload, { MultipartUploadOptions } from 'react-native-background-upload'
+import { AccessToken } from 'react-native-fbsdk'
 
 import { AppNavigationProps, AppNavigation } from '../../navigation'
 import { KeyboardView, Button } from '../../component'
@@ -40,7 +41,7 @@ const CreateActivityScreen = ({
   const [uploading, setUploading] = useState(false)
   const [progress, setProgress] = useState(0)
 
-  const authToken = useSelector((state: RootState) => state.auth.token)
+  const authorized = useSelector((state: RootState) => Boolean(state.auth.id))
 
   const keyboardViewEnabled = useMemo(
     () => step === CreateActivityStep.title || step === CreateActivityStep.description,
@@ -75,51 +76,51 @@ const CreateActivityScreen = ({
   )
 
   const submit = useCallback(async () => {
-    if (
-      authToken == null ||
-      !title.length ||
-      !description.length ||
-      selectedImage == null ||
-      selectedFrequency == null
-    ) {
+    if (!authorized || !title.length || !description.length || selectedImage == null || selectedFrequency == null) {
       return
-    }
-    const path = Platform.OS === 'ios' ? selectedImage.path : selectedImage.path.replace('file://', '')
-
-    const options: MultipartUploadOptions = {
-      url: 'https://blablahome.lazureykis.dev/api/activities',
-      path,
-      method: 'POST',
-      field: 'cover',
-      type: 'multipart',
-      headers: {
-        'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${authToken}`,
-      },
-      parameters: {
-        name: title,
-        description,
-        days: selectedFrequency,
-      },
-      notification: {
-        enabled: false,
-      },
     }
 
     try {
       setUploading(true)
+
+      const accessTokenData = await AccessToken.getCurrentAccessToken()
+      const token = accessTokenData?.accessToken || ''
+
+      const path = Platform.OS === 'ios' ? selectedImage.path : selectedImage.path.replace('file://', '')
+      const options: MultipartUploadOptions = {
+        url: 'https://blablahome.lazureykis.dev/api/activities',
+        path,
+        method: 'POST',
+        field: 'cover',
+        type: 'multipart',
+        headers: {
+          'content-type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+        parameters: {
+          name: title,
+          description,
+          days: selectedFrequency,
+        },
+        notification: {
+          enabled: false,
+        },
+      }
+
+      console.log(options)
+
       const uploadId = await BackgroundUpload.startUpload(options)
       BackgroundUpload.addListener('progress', uploadId, (data) => setProgress(data.progress))
       BackgroundUpload.addListener('error', uploadId, () => setUploading(false))
       BackgroundUpload.addListener('cancelled', uploadId, () => setUploading(false))
       BackgroundUpload.addListener('completed', uploadId, (data) => {
-        // console.log('Completed!', data)
-        AppNavigation.dismissAllModals()
+        setUploading(false)
+        console.log('Completed!', data)
       })
     } catch {
       setUploading(false)
     }
-  }, [title, description, selectedImage, selectedFrequency, authToken])
+  }, [title, description, selectedImage, selectedFrequency, authorized])
 
   const onPressSubmit = useCallback(() => {
     switch (step) {
@@ -157,10 +158,13 @@ const CreateActivityScreen = ({
         break
     }
   }, [title, description, selectedImage, selectedFrequency, step, openNextStep, submit])
+
+  console.log(progress)
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardView modal enabled={keyboardViewEnabled}>
-        {!progress && (
+        {!uploading && (
           <>
             <View style={styles.content}>
               {step === CreateActivityStep.title && (

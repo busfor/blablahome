@@ -9,9 +9,8 @@ import ActivityCard from './components/ActivityCard'
 export default memo(({ activities, onPressActivity, handleRefresh, loading }: Props) => (
   <ScrollView
     style={styles.container}
-    refreshControl={
-      <RefreshControl refreshing={loading} onRefresh={handleRefresh} tintColor={'black'} />
-    }
+    contentContainerStyle={styles.scrollViewContent}
+    refreshControl={<RefreshControl refreshing={loading} onRefresh={handleRefresh} tintColor={'black'} />}
   >
     {activities.map((activity, index) => (
       <ActivityCard
