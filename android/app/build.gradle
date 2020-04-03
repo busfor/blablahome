@@ -132,6 +132,8 @@ android {
         applicationId "com.busfor.blablahome"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
         multiDexEnabled true
         versionCode 1
         versionName "1.0"
