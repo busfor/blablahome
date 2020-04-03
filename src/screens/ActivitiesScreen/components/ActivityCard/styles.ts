@@ -17,7 +17,7 @@ export default StyleSheet.create({
   tint: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: colors.black,
-    opacity: 0.3,
+    opacity: 0.4,
   },
 
   wrapper: {
@@ -42,18 +42,23 @@ export default StyleSheet.create({
 
   infoContainer: {
     padding: 20,
-    backgroundColor: '#CCCCCC',
     borderRadius: 8,
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
+  },
+
+  infoCover: {
+    ...StyleSheet.absoluteFillObject,
   },
 
   title: {
     fontSize: 20,
-    color: '#535353',
+    color: colors.white,
     fontFamily: FontFamily.medium,
   },
 
   frequency: {
-    color: '#535353',
+    color: colors.white,
     fontSize: 14,
     fontFamily: FontFamily.regular,
     marginTop: 8,
