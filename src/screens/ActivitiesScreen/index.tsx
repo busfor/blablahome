@@ -1,14 +1,39 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Options } from 'react-native-navigation'
+import { useNavigationButtonPress } from 'react-native-navigation-hooks/dist'
 
-import { AppNavigation } from '../../navigation'
+import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { Screens } from '..'
 import { fetchActivities } from '../../Api'
 import { Activity } from '../../AppPropTypes'
+import { CreateActivityStep } from '../CreateActivityScreen/types'
 
 import Presenter from './presenter'
 
-const ActivitiesScreen = () => {
+const CREATE_BUTTON_ID = 'create_activity'
+
+const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
+  useNavigationButtonPress(
+    () => {
+      AppNavigation.showModal({
+        stack: {
+          children: [
+            {
+              component: {
+                name: Screens.createActivityScreen,
+                passProps: {
+                  step: CreateActivityStep.title,
+                },
+              },
+            },
+          ],
+        },
+      })
+    },
+    componentId,
+    CREATE_BUTTON_ID
+  )
+
   const [loading, setLoading] = useState(false)
   const [activities, setActivities] = useState<Activity[]>([])
 
@@ -26,7 +51,7 @@ const ActivitiesScreen = () => {
       .catch(() => {
         setLoading(false)
       })
-  })
+  }, [])
 
   const onPressActivity = useCallback((activity: Activity) => {
     AppNavigation.showModal({
@@ -53,6 +78,7 @@ ActivitiesScreen.options = (): Options => ({
     title: {
       text: 'Activities',
     },
+    rightButtons: [{ id: CREATE_BUTTON_ID, text: 'Create' }],
   },
 })
 
