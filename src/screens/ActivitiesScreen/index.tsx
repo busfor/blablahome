@@ -50,7 +50,7 @@ const ActivitiesScreen = () => {
 ActivitiesScreen.options = (): Options => ({
   topBar: {
     title: {
-      text: 'Ideas',
+      text: 'Activities',
     },
   },
 })

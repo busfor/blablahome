@@ -64,7 +64,7 @@ Navigation.events().registerAppLaunchedListener(() => {
               ],
               options: {
                 bottomTab: {
-                  text: 'Ideas',
+                  text: 'Activities',
                   icon: feedIcon,
                 },
               },
