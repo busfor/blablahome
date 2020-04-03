@@ -26,7 +26,7 @@ mock.onGet(`${BASE_API_URL}/activities`).reply(200, [
 mock.onGet(/.*\/users\/.*\/participations/).reply(200, [
   {
     id: 'c59c229e-3a53-462c-b4e2-2d41c07f59b3',
-    progress: 0,
+    progress: 4,
     completed_at: null,
     user: {
       id: '0ac2009f-584b-4462-906a-4d1028d32e5f',
@@ -92,7 +92,7 @@ mock.onGet(/.*\/users\/.*\/participations/).reply(200, [
 mock.onGet(`${BASE_API_URL}/activities/62bed2d2-1ce4-49c0-a068-031d69aa1117/participations`).reply(200, [
   {
     id: 'c59c229e-3a53-462c-b4e2-2d41c07f59b3',
-    progress: 0,
+    progress: 3,
     completed_at: null,
     user: {
       id: '0ac2009f-584b-4462-906a-4d1028d32e5f',

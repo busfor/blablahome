@@ -9,9 +9,9 @@ export default StyleSheet.create({
   },
 
   avatar: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
     backgroundColor: '#CCCCCC',
   },
 

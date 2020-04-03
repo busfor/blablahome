@@ -20,15 +20,6 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  progression: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: 'transparent',
-    borderColor: '#CCCCCC',
-    borderWidth: 3,
-  },
-
   title: {
     fontSize: 18,
     fontFamily: FontFamily.regular,

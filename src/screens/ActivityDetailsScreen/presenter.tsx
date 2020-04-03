@@ -1,12 +1,13 @@
 import React, { memo } from 'react'
 import { Text, View, ScrollView } from 'react-native'
 
-import { User as UserType, Participation } from '../../AppPropTypes'
+import { User as UserType, Participation as ParticipationType } from '../../AppPropTypes'
 import { ParticipantsCount, User } from '../../component'
 
 import styles from './styles'
+import Participation from './Components/Participation'
 
-export default memo(({ name, days, participantsCount, completedCount, description, user, participants }: Props) => (
+export default memo(({ name, days, participantsCount, completedCount, description, user, participations }: Props) => (
   <View style={styles.container}>
     <View style={styles.topContainer}>
       <Text style={styles.title}>{name}</Text>
@@ -22,15 +23,14 @@ export default memo(({ name, days, participantsCount, completedCount, descriptio
         <User user={user} />
       </View>
       <View style={styles.headerContainer}>
-        <Text style={styles.header}>PARTICIPANTS {participants.length > 0 && participants.length}</Text>
+        <Text style={styles.header}>PARTICIPANTS {participations.length > 0 && participations.length}</Text>
       </View>
-      {participants.map((participant, index) => (
-        <View
-          style={[styles.participant, index === participants.length - 1 && styles.bottomSpace]}
-          key={participant.id}
-        >
-          <User user={participant.user} />
-        </View>
+      {participations.map((participation, index) => (
+        <Participation
+          key={participation.id}
+          participation={participation}
+          isLast={index === participations.length - 1}
+        />
       ))}
     </ScrollView>
   </View>
@@ -43,5 +43,5 @@ interface Props {
   completedCount: number
   description: string
   user: UserType
-  participants: Participation[]
+  participations: ParticipationType[]
 }

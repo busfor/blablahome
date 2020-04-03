@@ -21,12 +21,12 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
     participants_count: participantsCount,
   } = activity
 
-  const [participants, setParticipants] = useState<Participation[]>([])
+  const [participations, setParticipations] = useState<Participation[]>([])
 
   useEffect(() => {
     fetchParticipations(id)
       .then((response) => {
-        setParticipants(response.data)
+        setParticipations(response.data)
       })
       .catch(noop)
   }, [])
@@ -48,7 +48,7 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
         completedCount,
         description,
         user,
-        participants,
+        participations,
       }}
     />
   )
