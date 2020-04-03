@@ -12,6 +12,7 @@ import FeedScreen from './FeedScreen'
 import ActivitiesScreen from './ActivitiesScreen'
 import ProfileScreen from './ProfileScreen'
 import ActivityDetailsScreen from './ActivityDetailsScreen'
+import ProgressScreen from './ProgressScreen'
 
 const screens = {
   feedScreen: {
@@ -29,6 +30,10 @@ const screens = {
   ActivityDetailsScreen: {
     name: Screens.ActivityDetailsScreen,
     component: ActivityDetailsScreen,
+  },
+  progressScreen: {
+    name: Screens.progressScreen,
+    component: ProgressScreen,
   },
 }
 

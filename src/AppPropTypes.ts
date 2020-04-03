@@ -1,5 +1,5 @@
 export interface User {
-  id: number
+  id: string
   name: string
 }
 
@@ -27,18 +27,18 @@ export interface Comment {
   body: string
 }
 
-export interface Commitment {
-  id: number
+export interface Participation {
+  id: string
+  progress: number
+  completed_at: string | null
   user: User
   activity: Activity
-  estimate?: Date
-  comments: Comment[]
 }
 
 export type EventStatus = 'started' | 'progressing' | 'done'
 
 export interface Event {
   id: number
-  commitment: Commitment
+  commitment: Participation
   status: EventStatus
 }

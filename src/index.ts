@@ -75,6 +75,23 @@ Navigation.events().registerAppLaunchedListener(() => {
               children: [
                 {
                   component: {
+                    name: Screens.progressScreen,
+                  },
+                },
+              ],
+              options: {
+                bottomTab: {
+                  text: 'Progress',
+                  icon: feedIcon,
+                },
+              },
+            },
+          },
+          {
+            stack: {
+              children: [
+                {
+                  component: {
                     name: Screens.profileScreen,
                   },
                 },

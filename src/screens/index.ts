@@ -3,4 +3,5 @@ export enum Screens {
   ActivitiesScreen = 'ActivitiesScreen',
   profileScreen = 'profileScreen',
   ActivityDetailsScreen = 'ActivityDetailsScreen',
+  progressScreen = 'ProgressScreen',
 }

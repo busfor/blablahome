@@ -1,4 +1,4 @@
-import { Activity } from '../AppPropTypes'
+import { Activity, Participation } from '../AppPropTypes'
 
 import { ApiRequestAuthResponseData } from './types'
 import { BASE_API_URL, getRequest, postRequest } from './utils'
@@ -16,3 +16,10 @@ export const requestAuth = (accessToken: string) =>
  * Fetch activities
  */
 export const fetchActivities = () => getRequest<Activity[]>(`${BASE_API_URL}/activities`, {})
+
+/**
+ * Fetch participations for user
+ * @param userId - user ID
+ */
+export const fetchParticipations = (userId: string) =>
+  getRequest<Participation[]>(`${BASE_API_URL}/users/${userId}/participations`)

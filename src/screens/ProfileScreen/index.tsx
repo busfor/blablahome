@@ -34,9 +34,7 @@ const ProfileScreen = () => {
 }
 ProfileScreen.options = (): Options => ({
   topBar: {
-    background: {
-      color: '#E5E5E5',
-    },
+    visible: false,
   },
   statusBar: {
     backgroundColor: '#E5E5E5',
