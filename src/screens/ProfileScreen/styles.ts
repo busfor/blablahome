@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../constants/fonts'
+import colors from '../../colors'
 
 const BUTTON_HEIGHT = 50
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.backgroundColor,
     padding: 20,
     paddingBottom: 20 + BUTTON_HEIGHT,
   },
