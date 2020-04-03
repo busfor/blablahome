@@ -58,7 +58,7 @@ Navigation.events().registerAppLaunchedListener(() => {
               children: [
                 {
                   component: {
-                    name: Screens.ideasScreen,
+                    name: Screens.ActivitiesScreen,
                   },
                 },
               ],

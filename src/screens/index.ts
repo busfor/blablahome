@@ -1,6 +1,6 @@
 export enum Screens {
   feedScreen = 'feedScreen',
-  ideasScreen = 'ideasScreen',
+  ActivitiesScreen = 'ActivitiesScreen',
   profileScreen = 'profileScreen',
-  ideaDetailsScreen = 'ideaDetailsScreen',
+  ActivityDetailsScreen = 'ActivityDetailsScreen',
 }

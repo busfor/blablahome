@@ -9,26 +9,26 @@ import { store, persistor } from '../redux/store'
 import { Screens } from '.'
 
 import FeedScreen from './FeedScreen'
-import IdeasScreen from './IdeasScreen'
+import ActivitiesScreen from './ActivitiesScreen'
 import ProfileScreen from './ProfileScreen'
-import IdeaDetailsScreen from './IdeaDetailsScreen'
+import ActivityDetailsScreen from './ActivityDetailsScreen'
 
 const screens = {
   feedScreen: {
     name: Screens.feedScreen,
     component: FeedScreen,
   },
-  ideasScreen: {
-    name: Screens.ideasScreen,
-    component: IdeasScreen,
+  ActivitiesScreen: {
+    name: Screens.ActivitiesScreen,
+    component: ActivitiesScreen,
   },
   profileScreen: {
     name: Screens.profileScreen,
     component: ProfileScreen,
   },
-  ideaDetailsScreen: {
-    name: Screens.ideaDetailsScreen,
-    component: IdeaDetailsScreen,
+  ActivityDetailsScreen: {
+    name: Screens.ActivityDetailsScreen,
+    component: ActivityDetailsScreen,
   },
 }
 
