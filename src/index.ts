@@ -31,6 +31,14 @@ Navigation.events().registerAppLaunchedListener(() => {
     bottomTabs: {
       titleDisplayMode: 'alwaysShow',
     },
+    animations: {
+      push: {
+        waitForRender: true,
+      },
+      showModal: {
+        waitForRender: true,
+      },
+    },
   })
   Navigation.setRoot({
     root: {
