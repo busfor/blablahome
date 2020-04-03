@@ -6,6 +6,7 @@ import { noop } from 'lodash'
 import { Activity, Participation } from '../../AppPropTypes'
 import { modalBackButton, AppNavigationProps, AppNavigation } from '../../navigation/index'
 import { fetchParticipations } from '../../Api'
+import colors from '../../colors'
 
 import Presenter from './presenter'
 
@@ -56,12 +57,12 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
 ActivityDetailsScreen.options = (): Options => ({
   topBar: {
     background: {
-      color: '#F6F5F5',
+      color: colors.backgroundColor,
     },
     leftButtons: [modalBackButton()],
   },
   statusBar: {
-    backgroundColor: '#F6F5F5',
+    backgroundColor: colors.backgroundColor,
   },
 })
 

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 
+import colors from '../../colors'
 import { FontFamily } from '../../constants/fonts'
 
 export default StyleSheet.create({
@@ -14,7 +15,7 @@ export default StyleSheet.create({
 
   topContainer: {
     padding: 20,
-    backgroundColor: '#F6F5F5',
+    backgroundColor: colors.backgroundColor,
   },
 
   title: {

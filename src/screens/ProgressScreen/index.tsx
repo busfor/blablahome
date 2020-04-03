@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { Participation } from '../../AppPropTypes'
 import { RootState } from '../../redux/reducers'
 import { fetchParticipationsForUser } from '../../Api'
+import colors from '../../colors'
 
 import Presenter from './presenter'
 
@@ -57,7 +58,7 @@ ProgressScreen.options = (): Options => ({
     visible: false,
   },
   statusBar: {
-    backgroundColor: '#F6F5F5',
+    backgroundColor: colors.backgroundColor,
   },
 })
 

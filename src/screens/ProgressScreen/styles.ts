@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native'
 
+import colors from '../../colors'
 import { FontFamily } from '../../constants/fonts'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#F6F5F5',
+    backgroundColor: colors.backgroundColor,
     flex: 1,
     padding: 16,
   },

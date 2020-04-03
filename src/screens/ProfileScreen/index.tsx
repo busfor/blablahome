@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../redux/reducers'
 import { login, logout } from '../../redux/actions'
 import { requestAuth } from '../../Api'
+import colors from '../../colors'
 
 import Presenter from './presenter'
 
@@ -37,7 +38,7 @@ ProfileScreen.options = (): Options => ({
     visible: false,
   },
   statusBar: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.backgroundColor,
   },
 })
 
