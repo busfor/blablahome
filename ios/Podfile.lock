@@ -247,6 +247,8 @@ PODS:
     - React-cxxreact (= 0.62.0)
     - React-jsi (= 0.62.0)
   - React-jsinspector (0.62.0)
+  - react-native-background-upload (5.5.0):
+    - React
   - react-native-fbsdk (1.1.2):
     - React
     - react-native-fbsdk/Core (= 1.1.2)
@@ -328,6 +330,16 @@ PODS:
     - React-RCTText
   - RNCAsyncStorage (1.9.0):
     - React
+  - RNImageCropPicker (0.28.0):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.28.0)
+    - RSKImageCropper
+  - RNImageCropPicker/QBImagePickerController (0.28.0):
+    - React-Core
+    - React-RCTImage
+    - RSKImageCropper
+  - RSKImageCropper (2.2.3)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -354,6 +366,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-background-upload (from `../node_modules/react-native-background-upload`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -369,6 +382,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -387,6 +401,7 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - OpenSSL-Universal
+    - RSKImageCropper
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -418,6 +433,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-background-upload:
+    :path: "../node_modules/react-native-background-upload"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
   react-native-splash-screen:
@@ -446,6 +463,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-navigation"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -478,6 +497,7 @@ SPEC CHECKSUMS:
   React-jsi: bc8166d6833cdcb0848c80710b26ce63fad2c099
   React-jsiexecutor: 8bf0b2707f05865113415088c398a7f98c0cf546
   React-jsinspector: 8e5913c4c6c54f0d3f9c9fc630c465a89cded65d
+  react-native-background-upload: 75c831d727f5f03d5dbdf9f4c63f5aaf520f7d70
   react-native-fbsdk: c35d42169e64aaf66f01713c1e18d0674f7f6519
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 674afbc8b9c76e0a83520e0a51da29a70802c03f
@@ -492,6 +512,8 @@ SPEC CHECKSUMS:
   ReactCommon: d22162ab8f1358c53dfcd0f9c4d82d38facdbc48
   ReactNativeNavigation: 667586f6924fbd09512e2933fe70497db914b758
   RNCAsyncStorage: 453cd7c335ec9ba3b877e27d02238956b76f3268
+  RNImageCropPicker: cf129d17e042ce3e96fb9ada967c28f21f977c82
+  RSKImageCropper: a446db0e8444a036b34f3c43db01b2373baa4b2a
   Yoga: 9db9ff2025ad21d1ac0a8b3c85d5ac4e7c29d525
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

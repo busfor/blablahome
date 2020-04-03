@@ -19,8 +19,9 @@ const ProfileScreen = () => {
       const result = await LoginManager.logInWithPermissions(['public_profile'])
       if (!result.error && !result.isCancelled) {
         const data = await AccessToken.getCurrentAccessToken()
-        const response = await requestAuth(data?.accessToken)
-        dispatch(login(response.data.user))
+        const token = data?.accessToken || ''
+        const response = await requestAuth(token)
+        dispatch(login({ ...response.data.user, token }))
       }
     } catch (error) {
       console.log('error', error)

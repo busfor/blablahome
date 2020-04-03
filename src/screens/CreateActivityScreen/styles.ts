@@ -9,10 +9,10 @@ export default StyleSheet.create({
 
   content: {
     flex: 1,
-    paddingHorizontal: 20,
   },
 
   buttonContainer: {
-    padding: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
   },
 })

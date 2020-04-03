@@ -3,10 +3,15 @@ import { Platform, KeyboardAvoidingView, View, KeyboardAvoidingViewProps } from 
 
 import styles from './styles'
 
-export default memo(({ children, ...otherProps }: Props & KeyboardAvoidingViewProps) => {
+export default memo(({ children, modal = false, ...otherProps }: Props & KeyboardAvoidingViewProps) => {
   if (Platform.OS === 'ios') {
     return (
-      <KeyboardAvoidingView keyboardVerticalOffset={110} behavior='padding' {...otherProps} style={styles.container}>
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={modal ? 110 : 0}
+        behavior='padding'
+        {...otherProps}
+        style={styles.container}
+      >
         {children}
       </KeyboardAvoidingView>
     )
@@ -20,4 +25,5 @@ export default memo(({ children, ...otherProps }: Props & KeyboardAvoidingViewPr
 
 interface Props {
   children: ReactNode
+  modal?: boolean
 }
