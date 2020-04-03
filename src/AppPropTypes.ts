@@ -9,7 +9,7 @@ export interface Picture {
   height: number
 }
 
-export interface Idea {
+export interface Activity {
   id: number
   author: User
   title: string
@@ -17,8 +17,7 @@ export interface Idea {
   pictures?: Picture[]
   participants: User[]
   completed: number
-  frequent: boolean
-  frequency: number
+  frequency: string
 }
 
 export interface Comment {

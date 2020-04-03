@@ -3,17 +3,21 @@ import { StyleSheet } from 'react-native'
 import { FontFamily } from '../../../../constants/fonts'
 
 export default StyleSheet.create({
-  ideaContainer: {
+  container: {
     padding: 16,
     backgroundColor: '#E9E9E9',
     borderRadius: 8,
   },
 
+  spacing: {
+    marginBottom: 20,
+  },
+
   author: {
-    fontFamily: FontFamily.regular,
     fontSize: 14,
     color: '#535353',
     margin: 4,
+    fontFamily: FontFamily.regular,
   },
 
   infoContainer: {
@@ -24,31 +28,21 @@ export default StyleSheet.create({
   },
 
   title: {
-    fontFamily: FontFamily.medium,
     fontSize: 20,
     color: '#535353',
+    fontFamily: FontFamily.medium,
+  },
+
+  frequency: {
+    color: '#535353',
+    fontSize: 14,
+    fontFamily: FontFamily.regular,
+    marginTop: 8,
   },
 
   countersContainer: {
     marginTop: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-
-  countContainer: {
-    flex: 1,
-  },
-
-  count: {
-    fontFamily: FontFamily.medium,
-    fontSize: 18,
-    color: '#535353',
-  },
-
-  countDescription: {
-    fontFamily: FontFamily.regular,
-    fontSize: 14,
-    color: '#535353',
-    marginTop: 2,
   },
 })
