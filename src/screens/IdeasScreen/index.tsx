@@ -40,7 +40,7 @@ const IdeasScreen = () => {
         }) => (
           <IdeaCard
             {...{
-              key: id,
+              key: String(id),
               title,
               completedCount: completed,
               participantsCount: participants.length,

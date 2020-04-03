@@ -20,6 +20,8 @@
 		8AA42915595B8D85D71BBBF8 /* libPods-blablahome-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1A7B1B10DC670C8AADE45D /* libPods-blablahome-tvOSTests.a */; };
 		BBA1476E8BC97F9C6F489FD9 /* libPods-blablahome.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB03E4AF5182D68716A0C31C /* libPods-blablahome.a */; };
 		E149B0EC4E76E5AB6B3F470F /* libPods-blablahome-blablahomeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 099B79E8E31C543749E2998F /* libPods-blablahome-blablahomeTests.a */; };
+		FD3CB56D77FC4D0DAC912DDE /* GTEestiProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */; };
+		DD697E18C8254D2BAF6B45CB /* GTEestiProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE1A7B1B10DC670C8AADE45D /* libPods-blablahome-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blablahome-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */ = {isa = PBXFileReference; name = "GTEestiProDisplay-Medium.ttf"; path = "../assets/fonts/GTEestiProDisplay-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */ = {isa = PBXFileReference; name = "GTEestiProDisplay-Regular.ttf"; path = "../assets/fonts/GTEestiProDisplay-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5839FD486342810A5390D1DA /* Pods */,
+				1654E57E9B4A45ACB3CAA41D /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -196,6 +201,16 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		1654E57E9B4A45ACB3CAA41D /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				21C2D057E2764709AA82F8D2 /* GTEestiProDisplay-Medium.ttf */,
+				2DF4D5F2162E4448824142D6 /* GTEestiProDisplay-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -342,6 +357,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				FD3CB56D77FC4D0DAC912DDE /* GTEestiProDisplay-Medium.ttf in Resources */,
+				DD697E18C8254D2BAF6B45CB /* GTEestiProDisplay-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

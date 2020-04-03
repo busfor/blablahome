@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { FontFamily } from '../../constants/fonts'
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -20,6 +22,7 @@ export default StyleSheet.create({
   },
 
   author: {
+    fontFamily: FontFamily.regular,
     fontSize: 14,
     color: '#535353',
     margin: 4,
@@ -33,6 +36,7 @@ export default StyleSheet.create({
   },
 
   title: {
+    fontFamily: FontFamily.medium,
     fontSize: 20,
     color: '#535353',
   },
@@ -48,11 +52,13 @@ export default StyleSheet.create({
   },
 
   count: {
+    fontFamily: FontFamily.medium,
     fontSize: 18,
     color: '#535353',
   },
 
   countDescription: {
+    fontFamily: FontFamily.regular,
     fontSize: 14,
     color: '#535353',
     marginTop: 2,
