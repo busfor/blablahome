@@ -42,7 +42,7 @@ export default StyleSheet.create({
     height: BUTTON_HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: colors.white,
     alignSelf: 'center',
     position: 'absolute',
     bottom: 20,

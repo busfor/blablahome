@@ -1,21 +1,41 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../../../constants/fonts'
+import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
-    padding: 16,
     backgroundColor: '#E9E9E9',
     borderRadius: 8,
+    height: 320,
+  },
+
+  cover: {
+    ...StyleSheet.absoluteFillObject,
+  },
+
+  tint: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: colors.black,
+    opacity: 0.3,
+  },
+
+  wrapper: {
+    flex: 1,
+    padding: 16,
   },
 
   spacing: {
     marginBottom: 16,
   },
 
+  authorContainer: {
+    flex: 1,
+  },
+
   author: {
     fontSize: 14,
-    color: '#535353',
+    color: colors.white,
     margin: 4,
     fontFamily: FontFamily.regular,
   },
@@ -23,7 +43,6 @@ export default StyleSheet.create({
   infoContainer: {
     padding: 20,
     backgroundColor: '#CCCCCC',
-    marginTop: 50,
     borderRadius: 8,
   },
 

@@ -21,6 +21,7 @@ export default memo(({ activities, onPressActivity, handleRefresh, loading }: Pr
           completedCount: activity.completions_count,
           participantsCount: activity.participants_count,
           author: activity.user.name,
+          cover: activity.cover,
           onPress: () => onPressActivity(activity),
           isLast: index === activities.length - 1,
         }}

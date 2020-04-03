@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../../../constants/fonts'
+import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
@@ -10,7 +11,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#FFF',
+    backgroundColor: colors.white,
     marginVertical: 6,
   },
 

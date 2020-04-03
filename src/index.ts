@@ -4,6 +4,7 @@ import { registerScreens } from './screens/register'
 import { Screens } from './screens'
 import { feedIcon } from './images'
 import { FontFamily } from './constants/fonts'
+import colors from './colors'
 
 registerScreens()
 
@@ -11,7 +12,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setDefaultOptions({
     statusBar: {
       style: 'dark',
-      backgroundColor: 'white',
+      backgroundColor: colors.white,
     },
     topBar: {
       noBorder: true,
@@ -23,7 +24,7 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
     layout: {
       orientation: ['portrait'],
-      backgroundColor: 'white',
+      backgroundColor: colors.white,
     },
     bottomTab: {
       selectedIconColor: 'rgb(0,122,255)',
