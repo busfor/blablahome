@@ -1,8 +1,9 @@
 import React, { memo } from 'react'
 import { View, Text } from 'react-native'
 
-import styles from '../styles'
-import { Touchable } from '../../../component'
+import { Touchable } from '../../../../component'
+
+import styles from './styles'
 
 export default memo(({ title, participantsCount, completedCount, author, onPress }: Props) => (
   <Touchable onPress={onPress} style={styles.ideaContainer}>
