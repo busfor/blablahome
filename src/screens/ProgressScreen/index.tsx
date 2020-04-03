@@ -3,8 +3,8 @@ import { Options } from 'react-native-navigation'
 import { useSelector } from 'react-redux'
 
 import { Participation } from '../../AppPropTypes'
-import { fetchParticipations } from '../../Api'
 import { RootState } from '../../redux/reducers'
+import { fetchParticipationsForUser } from '../../Api'
 
 import Presenter from './presenter'
 
@@ -17,7 +17,7 @@ const ProgressScreen = () => {
       if (!profile.id) {
         return
       }
-      const { data: fetchedParticipations } = await fetchParticipations(profile.id)
+      const { data: fetchedParticipations } = await fetchParticipationsForUser(profile.id)
       setParticipations(fetchedParticipations)
     } catch (error) {
       console.log('error', error)

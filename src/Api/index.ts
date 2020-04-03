@@ -21,5 +21,12 @@ export const fetchActivities = () => getRequest<Activity[]>(`${BASE_API_URL}/act
  * Fetch participations for user
  * @param userId - user ID
  */
-export const fetchParticipations = (userId: string) =>
+export const fetchParticipationsForUser = (userId: string) =>
   getRequest<Participation[]>(`${BASE_API_URL}/users/${userId}/participations`)
+
+/**
+ * Fetch activities
+ * @param activityId - activity identifier
+ */
+export const fetchParticipations = (activityId: string) =>
+  getRequest<Participation[]>(`${BASE_API_URL}/activities/${activityId}/participations`, {})
