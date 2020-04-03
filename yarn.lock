@@ -5591,6 +5591,11 @@ react-native-fbsdk@^1.1.2:
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.1.2.tgz#4264903add869d05b84ef55ade9ff720c2957781"
   integrity sha512-Sp+oja868QVsB5vpEFbwZkEcCJOSBuZgh7UGJzUhaoTCs/zwSUHA6b4QichM7GiTxtQyKfT/F31DtvLj2N/qAQ==
 
+react-native-navigation-hooks@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation-hooks/-/react-native-navigation-hooks-5.0.0.tgz#d8f19d05b6227177f2fabb80db5c3cc3b81a78e8"
+  integrity sha512-ueDlMrfsn3v8Cbk4S5VmGrR9b7bfp73N9ZeMO/N68b2RahOtgPLOrhYouvzqBMCNgnGZ3SPeJDws3l1FG+tJ1w==
+
 react-native-navigation@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.4.0.tgz#bc7af1b32cc69143e186c4996b787a58a600776f"

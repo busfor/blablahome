@@ -1,16 +1,14 @@
 import React, { useCallback } from 'react'
-import { ScrollView } from 'react-native'
 import { Options } from 'react-native-navigation'
 
 import { AppNavigation } from '../../navigation'
 import { Screens } from '..'
 import { Activity } from '../../AppPropTypes'
 
-import styles from './styles'
-import ActivityCard from './components/ActivityCard'
+import Presenter from './presenter'
 
 const ActivitiesScreen = () => {
-  const onPressIdea = useCallback((activity: Activity) => {
+  const onPressActivity = useCallback((activity: Activity) => {
     AppNavigation.showModal({
       stack: {
         children: [
@@ -27,24 +25,7 @@ const ActivitiesScreen = () => {
     })
   }, [])
 
-  return (
-    <ScrollView style={styles.container}>
-      {activities.map((activity, index) => (
-        <ActivityCard
-          key={activity.id}
-          {...{
-            title: activity.title,
-            frequency: activity.frequency,
-            completedCount: activity.completed,
-            participantsCount: activity.participants.length,
-            author: activity.author.name,
-            onPress: () => onPressIdea(activity),
-            isLast: index === activities.length - 1,
-          }}
-        />
-      ))}
-    </ScrollView>
-  )
+  return <Presenter {...{ activities, onPressActivity }} />
 }
 
 ActivitiesScreen.options = (): Options => ({

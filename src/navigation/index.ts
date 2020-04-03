@@ -1,5 +1,7 @@
-import { Options, Navigation, Layout, LayoutRoot } from 'react-native-navigation'
+import { Options, Navigation, Layout, LayoutRoot, OptionsTopBarButton } from 'react-native-navigation'
 import { noop } from 'lodash'
+
+import { backIcon } from '../images'
 
 let openEnabled = true
 
@@ -88,3 +90,8 @@ export interface AppNavigationProps {
 }
 
 export { AppNavigation }
+
+export const modalBackButton = (): OptionsTopBarButton => ({
+  id: 'back',
+  icon: backIcon,
+})

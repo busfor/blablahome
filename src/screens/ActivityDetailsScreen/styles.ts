@@ -4,8 +4,12 @@ import { FontFamily } from '../../constants/fonts'
 
 export default StyleSheet.create({
   container: {
-    padding: 20,
     flex: 1,
+  },
+
+  content: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
 
   topContainer: {
@@ -28,7 +32,7 @@ export default StyleSheet.create({
 
   countersContainer: {
     flexDirection: 'row',
-    marginTop: 4,
+    marginTop: 24,
   },
 
   infoContainer: {
@@ -56,11 +60,11 @@ export default StyleSheet.create({
     letterSpacing: 2,
   },
 
-  participants: {
-    flex: 1,
-  },
-
   participant: {
     marginTop: 20,
+  },
+
+  bottomSpace: {
+    paddingBottom: 20,
   },
 })

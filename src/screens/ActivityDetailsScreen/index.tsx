@@ -1,47 +1,47 @@
 import React from 'react'
-import { Text, View, ScrollView } from 'react-native'
 import { Options } from 'react-native-navigation'
+import { useNavigationButtonPress } from 'react-native-navigation-hooks'
 
 import { Activity } from '../../AppPropTypes'
-import { ParticipantsCount, User } from '../../component'
+import { modalBackButton, AppNavigationProps, AppNavigation } from '../../navigation/index'
 
-import styles from './styles'
+import Presenter from './presenter'
 
-const ActivityDetailsScreen = ({ activity }: ActivityDetailsScreenProps) => (
-  <>
-    <View style={styles.topContainer}>
-      <Text style={styles.title}>{activity.title}</Text>
-      <Text style={styles.frequency}>{activity.frequency}</Text>
-    </View>
-    <View style={styles.container}>
-      <View style={styles.countersContainer}>
-        <ParticipantsCount count={activity.participants.length} description='Participants' />
-        <ParticipantsCount count={activity.completed} description='Completions' />
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.description}>{activity.description}</Text>
-        <User user={activity.author} />
-      </View>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>LIST OF PARTICIPANTS</Text>
-      </View>
-      <ScrollView style={styles.participants}>
-        {activity.participants.map((participant) => (
-          <View style={styles.participant} key={participant.id}>
-            <User user={participant} />
-          </View>
-        ))}
-      </ScrollView>
-    </View>
-  </>
-)
+const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & ActivityDetailsScreenProps) => {
+  const { title, frequency, completed: completedCount, description, author, participants } = activity
+
+  useNavigationButtonPress(
+    () => {
+      AppNavigation.dismissModal(componentId)
+    },
+    componentId,
+    'back'
+  )
+
+  return (
+    <Presenter
+      {...{
+        title,
+        frequency,
+        participantsCount: participants.length,
+        completedCount,
+        description,
+        author,
+        participants,
+      }}
+    />
+  )
+}
 
 ActivityDetailsScreen.options = (): Options => ({
   topBar: {
     background: {
       color: '#F6F5F5',
     },
-    noBorder: true,
+    leftButtons: [modalBackButton()],
+  },
+  statusBar: {
+    backgroundColor: '#F6F5F5',
   },
 })
 
