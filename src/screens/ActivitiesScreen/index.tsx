@@ -90,7 +90,13 @@ ActivitiesScreen.options = (): Options => ({
     title: {
       text: 'Activities',
     },
+    background: {
+      translucent: true,
+    },
     rightButtons: [{ id: CREATE_BUTTON_ID, text: 'Create' }],
+  },
+  bottomTabs: {
+    translucent: true,
   },
 })
 
