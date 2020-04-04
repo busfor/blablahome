@@ -1,12 +1,16 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { Options } from 'react-native-navigation'
 import { useNavigationButtonPress, useNavigationComponentDidAppear } from 'react-native-navigation-hooks'
+import { Alert } from 'react-native'
+import { AccessToken } from 'react-native-fbsdk'
+import { useSelector } from 'react-redux'
 
 import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { Screens } from '..'
 import { fetchActivities } from '../../Api'
 import { Activity } from '../../AppPropTypes'
 import { CreateActivityStep } from '../CreateActivityScreen/types'
+import { RootState } from '../../redux/reducers'
 
 import Presenter from './presenter'
 
@@ -16,6 +20,8 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
   const [loading, setLoading] = useState(false)
   const [activities, setActivities] = useState<Activity[]>([])
   const firstAppear = useRef(true)
+
+  const userId = useSelector((state: RootState) => state.auth.id)
 
   useEffect(() => {
     fetchData()
@@ -56,20 +62,23 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
 
   useNavigationButtonPress(
     () => {
-      AppNavigation.showModal({
-        stack: {
-          children: [
-            {
-              component: {
-                name: Screens.createActivityScreen,
-                passProps: {
-                  step: CreateActivityStep.title,
+      if (userId) {
+        return AppNavigation.showModal({
+          stack: {
+            children: [
+              {
+                component: {
+                  name: Screens.createActivityScreen,
+                  passProps: {
+                    step: CreateActivityStep.title,
+                  },
                 },
               },
-            },
-          ],
-        },
-      })
+            ],
+          },
+        })
+      }
+      return Alert.alert('', 'Please login to create an activity')
     },
     componentId,
     CREATE_BUTTON_ID

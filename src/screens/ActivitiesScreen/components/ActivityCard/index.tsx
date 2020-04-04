@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, findNodeHandle, LayoutChangeEvent, Platform, An
 import { BlurView } from '@react-native-community/blur'
 import FastImage from 'react-native-fast-image'
 
-import { Touchable, ParticipantsCount } from '../../../../component'
+import { Touchable, ParticipantsCount, TintBackground } from '../../../../component'
 import { getFrequency } from '../../../../constants/frequency'
 import { useTimeout } from '../../../../hooks'
 
@@ -57,7 +57,7 @@ export default memo(
     return (
       <Touchable withoutFeedback={true} onPress={onPress} style={[styles.container, !isLast && styles.spacing]}>
         {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
-        <View style={styles.tint} />
+        <TintBackground />
         <View style={styles.wrapper} onLayout={onLayoutWrapper}>
           <View style={styles.topContainer}>
             <View style={styles.authorContainer}>
@@ -76,7 +76,7 @@ export default memo(
                 onLoadEnd={onLoadEnd}
               />
             )}
-            <View style={styles.tint} />
+            <TintBackground />
             {viewRefId && (
               <BlurView
                 viewRef={viewRefId}

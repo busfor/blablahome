@@ -2,6 +2,7 @@ import { Options, Navigation, Layout, LayoutRoot, OptionsTopBarButton } from 're
 import { noop } from 'lodash'
 
 import { backIcon } from '../images'
+import colors from '../colors'
 
 let openEnabled = true
 
@@ -94,4 +95,5 @@ export { AppNavigation }
 export const modalBackButton = (): OptionsTopBarButton => ({
   id: 'back',
   icon: backIcon,
+  color: colors.white,
 })

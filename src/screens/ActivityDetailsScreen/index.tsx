@@ -19,6 +19,7 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
     description,
     user,
     participants_count: participantsCount,
+    cover,
   } = activity
 
   const [participations, setParticipations] = useState<Participation[]>([])
@@ -49,6 +50,7 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
         description,
         user,
         participations,
+        cover,
       }}
     />
   )
@@ -57,8 +59,9 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
 ActivityDetailsScreen.options = (): Options => ({
   topBar: {
     background: {
-      color: colors.backgroundColor,
+      color: 'transparent',
     },
+    drawBehind: true,
     leftButtons: [modalBackButton()],
   },
   statusBar: {

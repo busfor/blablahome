@@ -14,26 +14,27 @@ export default StyleSheet.create({
   },
 
   topContainer: {
+    height: 180,
     padding: 20,
+    justifyContent: 'flex-end',
     backgroundColor: colors.backgroundColor,
   },
 
+  cover: {
+    ...StyleSheet.absoluteFillObject,
+  },
+
   title: {
-    color: '#272424',
+    color: colors.white,
     fontSize: 32,
     fontFamily: FontFamily.medium,
   },
 
   frequency: {
-    color: '#272424',
+    color: colors.white,
     fontSize: 16,
     fontFamily: FontFamily.regular,
     marginTop: 8,
-  },
-
-  countersContainer: {
-    flexDirection: 'row',
-    marginTop: 24,
   },
 
   infoContainer: {

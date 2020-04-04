@@ -14,12 +14,6 @@ export default StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
 
-  tint: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: colors.black,
-    opacity: 0.4,
-  },
-
   wrapper: {
     flex: 1,
     padding: 16,
