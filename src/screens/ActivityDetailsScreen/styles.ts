@@ -50,12 +50,12 @@ export default StyleSheet.create({
   headerContainer: {
     marginTop: 20,
     paddingVertical: 16,
-    borderColor: '#C4C4C4',
+    borderColor: colors.gray,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 
   header: {
-    color: '#535353',
+    color: colors.grayText,
     fontSize: 12,
     fontFamily: FontFamily.regular,
     letterSpacing: 2,

@@ -29,14 +29,33 @@ export default StyleSheet.create({
     marginBottom: 16,
   },
 
+  topContainer: {
+    flex: 1,
+  },
+
   authorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  avatarContainer: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    borderColor: colors.white,
+    borderWidth: 1.5,
+    backgroundColor: colors.gray,
+    overflow: 'hidden',
+  },
+
+  avatar: {
     flex: 1,
   },
 
   author: {
     fontSize: 14,
     color: colors.white,
-    margin: 4,
+    marginLeft: 8,
     fontFamily: FontFamily.regular,
   },
 

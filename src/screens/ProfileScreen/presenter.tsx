@@ -35,11 +35,11 @@ export default memo(({ loggedIn, username, handleLogin, handleLogout }: Props) =
           </View>
         </Section>
         <Section title='ACHIEVEMENTS'>
-          <View>
+          <>
             <Achievement title='Athlete: 5 streak weekly sports activities' points={25} />
             <Achievement title='Waterlover: 2 activities completed' points={10} />
             <Achievement title='Joining BlaBlaHome' points={5} />
-          </View>
+          </>
         </Section>
         <Touchable onPress={handleLogout} style={styles.fbButton}>
           <Text>Logout</Text>

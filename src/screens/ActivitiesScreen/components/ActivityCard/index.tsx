@@ -9,6 +9,9 @@ import { useTimeout } from '../../../../hooks'
 
 import styles from './styles'
 
+const tempAvatar =
+  'https://storage.googleapis.com/blablahome/uploads/activities/covers/62bed2d2-1ce4-49c0-a068-031d69aa1117/0.jpeg?v=63753130513'
+
 export default memo(
   ({ title, frequency, participantsCount, completedCount, author, cover, isLast, onPress }: Props) => {
     const animatedValue = useMemo(() => new Animated.Value(cover ? 0 : 1), [])
@@ -56,8 +59,13 @@ export default memo(
         {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
         <View style={styles.tint} />
         <View style={styles.wrapper} onLayout={onLayoutWrapper}>
-          <View style={styles.authorContainer}>
-            <Text style={styles.author}>{author}</Text>
+          <View style={styles.topContainer}>
+            <View style={styles.authorContainer}>
+              <View style={styles.avatarContainer}>
+                <FastImage style={styles.avatar} source={{ uri: tempAvatar }} />
+              </View>
+              <Text style={styles.author}>{author}</Text>
+            </View>
           </View>
           <Animated.View style={[styles.infoContainer, { opacity: animatedValue }]} onLayout={onLayoutInfo}>
             {cover && (
@@ -85,10 +93,10 @@ export default memo(
             )}
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.frequency}>{getFrequency(frequency)}</Text>
-            {/* <View style={styles.countersContainer}>
-              <ParticipantsCount count={participantsCount} description='Participants' />
-              <ParticipantsCount count={completedCount} description='Completions' />
-            </View> */}
+            <View style={styles.countersContainer}>
+              <ParticipantsCount light count={participantsCount} description='Participants' />
+              <ParticipantsCount light count={completedCount} description='Completions' />
+            </View>
           </Animated.View>
         </View>
       </Touchable>

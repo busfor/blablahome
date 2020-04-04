@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../constants/fonts'
+import colors from '../../colors'
 
 export default StyleSheet.create({
   countContainer: {
@@ -9,14 +10,18 @@ export default StyleSheet.create({
 
   count: {
     fontSize: 18,
-    color: '#535353',
+    color: colors.black,
     fontFamily: FontFamily.medium,
   },
 
   countDescription: {
     fontSize: 14,
-    color: '#535353',
+    color: colors.black,
     marginTop: 2,
     fontFamily: FontFamily.regular,
+  },
+
+  light: {
+    color: colors.white,
   },
 })

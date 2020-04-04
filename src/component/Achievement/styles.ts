@@ -1,21 +1,20 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../constants/fonts'
+import colors from '../../colors'
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 4,
-    marginHorizontal: -4,
-    marginVertical: 4,
+    marginVertical: 8,
   },
 
   icon: {
     width: 48,
     height: 48,
     borderRadius: 8,
-    backgroundColor: '#C4C4C4',
+    backgroundColor: colors.gray,
   },
 
   title: {
