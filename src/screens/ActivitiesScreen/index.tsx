@@ -18,7 +18,7 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
   const firstAppear = useRef(true)
 
   useEffect(() => {
-    handleRefresh()
+    fetchData()
   }, [])
 
   const fetchData = useCallback(() => {
@@ -94,9 +94,6 @@ ActivitiesScreen.options = (): Options => ({
       translucent: true,
     },
     rightButtons: [{ id: CREATE_BUTTON_ID, text: 'Create' }],
-  },
-  bottomTabs: {
-    translucent: true,
   },
 })
 

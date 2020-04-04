@@ -31,6 +31,7 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
     bottomTabs: {
       titleDisplayMode: 'alwaysShow',
+      translucent: true,
     },
     animations: {
       push: {
