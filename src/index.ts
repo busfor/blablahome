@@ -21,6 +21,9 @@ Navigation.events().registerAppLaunchedListener(() => {
         fontFamily: FontFamily.medium,
         fontSize: 18,
       },
+      background: {
+        translucent: true,
+      },
     },
     layout: {
       orientation: ['portrait'],
@@ -31,6 +34,7 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
     bottomTabs: {
       titleDisplayMode: 'alwaysShow',
+      translucent: true,
     },
     animations: {
       push: {
