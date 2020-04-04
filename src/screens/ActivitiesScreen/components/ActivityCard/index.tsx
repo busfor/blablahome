@@ -1,16 +1,7 @@
 import React, { memo, useRef, useState, useCallback, useMemo, useEffect } from 'react'
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  findNodeHandle,
-  LayoutChangeEvent,
-  Platform,
-  Animated,
-  Easing,
-} from 'react-native'
+import { View, Text, StyleSheet, findNodeHandle, LayoutChangeEvent, Platform, Animated, Easing } from 'react-native'
 import { BlurView } from '@react-native-community/blur'
+import FastImage from 'react-native-fast-image'
 
 import { Touchable, ParticipantsCount } from '../../../../component'
 import { getFrequency } from '../../../../constants/frequency'
@@ -24,7 +15,7 @@ export default memo(
     const [viewRefId, setViewRefId] = useState<number | null>(null)
     const [coords, setCoords] = useState({ x: 0, y: 0 })
     const [size, setSize] = useState({ width: 0, height: 0 })
-    const viewRef = useRef<Image>(null)
+    const viewRef = useRef<FastImage>(null)
     const [setViewRefIdTimeout] = useTimeout()
 
     const onLoadEnd = useCallback(() => {
@@ -62,7 +53,7 @@ export default memo(
 
     return (
       <Touchable withoutFeedback={true} onPress={onPress} style={[styles.container, !isLast && styles.spacing]}>
-        {cover && <Image style={styles.cover} source={{ uri: cover }} />}
+        {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
         <View style={styles.tint} />
         <View style={styles.wrapper} onLayout={onLayoutWrapper}>
           <View style={styles.authorContainer}>
@@ -70,7 +61,7 @@ export default memo(
           </View>
           <Animated.View style={[styles.infoContainer, { opacity: animatedValue }]} onLayout={onLayoutInfo}>
             {cover && (
-              <Image
+              <FastImage
                 style={[styles.infoCover, { left: -coords.x, top: -coords.y, width: size.width, height: size.height }]}
                 source={{ uri: cover }}
                 ref={viewRef}
