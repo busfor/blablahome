@@ -21,7 +21,7 @@ const ProfileScreen = () => {
         const data = await AccessToken.getCurrentAccessToken()
         const token = data?.accessToken || ''
         const response = await requestAuth(token)
-        dispatch(login({ ...response.data.user, token }))
+        dispatch(login(response.data.user))
       }
     } catch (error) {
       console.log('error', error)
