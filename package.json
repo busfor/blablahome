@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "clean-install": "watchman watch-del-all && rm -rf ./node_modules && rm -rf $TMPDIR/react-* && bundle install && yarn && cd ios && rm -rf Pods && pod install"
+    "clean-install": "watchman watch-del-all && rm -rf ./node_modules && rm -rf $TMPDIR/react-* && bundle install && yarn && cd android && ./gradlew clean && cd .. && cd ios && rm -rf Pods && pod install"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.9.0",

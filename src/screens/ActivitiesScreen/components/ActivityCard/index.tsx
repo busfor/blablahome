@@ -1,21 +1,34 @@
-import React, { memo, useRef, useState, useCallback } from 'react'
-import { View, Text, Image, StyleSheet, findNodeHandle, LayoutChangeEvent, Platform } from 'react-native'
+import React, { memo, useRef, useState, useCallback, useMemo, useEffect } from 'react'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  findNodeHandle,
+  LayoutChangeEvent,
+  Platform,
+  Animated,
+  Easing,
+} from 'react-native'
 import { BlurView } from '@react-native-community/blur'
 
 import { Touchable, ParticipantsCount } from '../../../../component'
 import { getFrequency } from '../../../../constants/frequency'
+import { useTimeout } from '../../../../hooks'
 
 import styles from './styles'
 
 export default memo(
   ({ title, frequency, participantsCount, completedCount, author, cover, isLast, onPress }: Props) => {
+    const animatedValue = useMemo(() => new Animated.Value(cover ? 0 : 1), [])
     const [viewRefId, setViewRefId] = useState<number | null>(null)
     const [coords, setCoords] = useState({ x: 0, y: 0 })
     const [size, setSize] = useState({ width: 0, height: 0 })
     const viewRef = useRef<Image>(null)
+    const [setViewRefIdTimeout] = useTimeout()
 
-    const onLayout = useCallback(() => {
-      setViewRefId(findNodeHandle(viewRef.current))
+    const onLoadEnd = useCallback(() => {
+      setViewRefIdTimeout(() => setViewRefId(findNodeHandle(viewRef.current)), 500)
     }, [])
 
     const onLayoutInfo = useCallback(
@@ -36,6 +49,17 @@ export default memo(
       []
     )
 
+    useEffect(() => {
+      if (viewRefId) {
+        Animated.timing(animatedValue, {
+          toValue: 1,
+          duration: 200,
+          easing: Easing.ease,
+          useNativeDriver: false,
+        }).start()
+      }
+    }, [viewRefId])
+
     return (
       <Touchable withoutFeedback={true} onPress={onPress} style={[styles.container, !isLast && styles.spacing]}>
         {cover && <Image style={styles.cover} source={{ uri: cover }} />}
@@ -44,13 +68,13 @@ export default memo(
           <View style={styles.authorContainer}>
             <Text style={styles.author}>{author}</Text>
           </View>
-          <View style={styles.infoContainer} onLayout={onLayoutInfo}>
+          <Animated.View style={[styles.infoContainer, { opacity: animatedValue }]} onLayout={onLayoutInfo}>
             {cover && (
               <Image
                 style={[styles.infoCover, { left: -coords.x, top: -coords.y, width: size.width, height: size.height }]}
                 source={{ uri: cover }}
                 ref={viewRef}
-                onLayout={onLayout}
+                onLoadEnd={onLoadEnd}
               />
             )}
             <View style={styles.tint} />
@@ -74,7 +98,7 @@ export default memo(
               <ParticipantsCount count={participantsCount} description='Participants' />
               <ParticipantsCount count={completedCount} description='Completions' />
             </View> */}
-          </View>
+          </Animated.View>
         </View>
       </Touchable>
     )

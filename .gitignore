@@ -28,6 +28,10 @@ build/
 .gradle
 local.properties
 *.iml
+.externalNativeBuild
+.settings
+.project
+.classpath
 
 # node.js
 #
