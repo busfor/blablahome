@@ -7,13 +7,12 @@ import { RootState } from '../../redux/reducers'
 import { login, logout } from '../../redux/actions'
 import { requestAuth } from '../../Api'
 import colors from '../../colors'
-import { getProfilePictureUrl } from '../../utils'
 
 import Presenter from './presenter'
 
 const ProfileScreen = () => {
   const dispatch = useDispatch()
-  const profile = useSelector((s: RootState) => s.auth.user)
+  const user = useSelector((s: RootState) => s.auth.user)
 
   const handleLogin = useCallback(async () => {
     try {
@@ -36,9 +35,7 @@ const ProfileScreen = () => {
   return (
     <Presenter
       {...{
-        username: profile.name,
-        pictureUrl: profile.user_id ? getProfilePictureUrl(profile.user_id) : null,
-        loggedIn: Boolean(profile.id),
+        user,
         handleLogin,
         handleLogout,
       }}

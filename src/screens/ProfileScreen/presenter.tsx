@@ -3,13 +3,15 @@ import { View, Text, SafeAreaView } from 'react-native'
 import FastImage from 'react-native-fast-image'
 
 import { Touchable, ParticipantsCount, Section, Achievement } from '../../component'
+import { User } from '../../AppPropTypes'
+import { getProfilePictureUrl } from '../../utils'
 
 import styles from './styles'
 
 const formatName = (name: string) => name.replace(' ', '\n')
 
-export default memo(({ loggedIn, username, pictureUrl, handleLogin, handleLogout }: Props) => {
-  if (!loggedIn)
+export default memo(({ user, handleLogin, handleLogout }: Props) => {
+  if (!user.id) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -19,20 +21,19 @@ export default memo(({ loggedIn, username, pictureUrl, handleLogin, handleLogout
         </View>
       </SafeAreaView>
     )
-
+  }
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.user}>
-          <Text style={styles.username}>{formatName(username || '')}</Text>
-          {pictureUrl && <FastImage source={{ uri: pictureUrl }} style={styles.avatar} />}
+          <Text style={styles.username}>{formatName(user.name || '')}</Text>
+          {user.user_id && <FastImage source={{ uri: getProfilePictureUrl(user.user_id) }} style={styles.avatar} />}
         </View>
         <Section title='ACTIVITIES'>
           <View style={styles.countersContainer}>
-            <ParticipantsCount count={15} description='Joins' />
-            <ParticipantsCount count={8} description='Successes' />
-            <ParticipantsCount count={7} description='Fails' />
-            <ParticipantsCount count={32} description='Check-ins' />
+            <ParticipantsCount count={user.joins_count} description='Joins' />
+            <ParticipantsCount count={user.completions_count} description='Successes' />
+            <ParticipantsCount count={user.fails_count} description='Fails' />
           </View>
         </Section>
         <Section title='ACHIEVEMENTS'>
@@ -51,9 +52,7 @@ export default memo(({ loggedIn, username, pictureUrl, handleLogin, handleLogout
 })
 
 interface Props {
-  loggedIn: boolean
-  username: string
-  pictureUrl: string | null
+  user: User
   handleLogin(): void
   handleLogout(): void
 }
