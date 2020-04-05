@@ -1,9 +1,32 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
-import MockAdapter from 'axios-mock-adapter'
+// import MockAdapter from 'axios-mock-adapter'
+
+// import { participation } from './samples'
 
 export const BASE_API_URL = 'https://blablahome.lazureykis.dev/api'
 
 // const mock = new MockAdapter(axios)
+//
+// mock.onGet(`${BASE_API_URL}/checkins`).reply(200, [
+//   {
+//     id: '62bed2d2-1ce4-49c0-a068-031d69aa1117',
+//     message: '',
+//     photo:
+//       'https://storage.googleapis.com/blablahome/uploads/activities/covers/62bed2d2-1ce4-49c0-a068-031d69aa1117/0.jpeg?v=63753130513',
+//     progress: 3,
+//     likes: 999,
+//     participation,
+//   },
+//   {
+//     id: '62bed2d2-1ce4-49c0-a068-031d69aa1117',
+//     message: '',
+//     photo:
+//       'https://storage.googleapis.com/blablahome/uploads/activities/covers/62bed2d2-1ce4-49c0-a068-031d69aa1117/0.jpeg?v=63753130513',
+//     progress: 3,
+//     likes: 999,
+//     participation,
+//   },
+// ])
 
 // mock.onGet(`${BASE_API_URL}/activities`).reply(200, [
 //   {

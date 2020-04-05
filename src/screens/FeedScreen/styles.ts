@@ -5,8 +5,11 @@ import colors from '../../colors'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: colors.backgroundColor,
+  },
+
+  scrollViewContent: {
+    paddingVertical: 16,
+    paddingHorizontal: 20,
   },
 })

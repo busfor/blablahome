@@ -1,6 +1,6 @@
 import { AccessToken } from 'react-native-fbsdk'
 
-import { Activity, Participation } from '../AppPropTypes'
+import { Activity, Checkin, Participation } from '../AppPropTypes'
 
 import { ApiRequestAuthResponseData } from './types'
 import { BASE_API_URL, getRequest, postRequest } from './utils'
@@ -27,7 +27,7 @@ export const fetchParticipationsForUser = (userId: string) =>
   getRequest<Participation[]>(`${BASE_API_URL}/users/${userId}/participations`)
 
 /**
- * Fetch activities
+ * Fetch participations for activity
  * @param activityId - activity identifier
  */
 export const fetchParticipations = (activityId: string) =>
@@ -50,3 +50,8 @@ export const joinActivitity = async (activityId: string) => {
     }
   )
 }
+
+/**
+ * Fetch check-ins
+ */
+export const fetchCheckins = () => getRequest<Checkin[]>(`${BASE_API_URL}/checkins`, {})

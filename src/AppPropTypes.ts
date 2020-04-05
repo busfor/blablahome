@@ -54,3 +54,12 @@ export interface Participation {
   user: User
   activity: Activity
 }
+
+export interface Checkin {
+  id: string
+  message: string
+  photo: string
+  progress: number
+  likes: number
+  participation: Participation
+}
