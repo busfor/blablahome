@@ -9,12 +9,12 @@ export default StyleSheet.create({
   },
 
   content: {
-    flex: 1,
     paddingHorizontal: 20,
   },
 
   topContainer: {
-    height: 180,
+    flex: 1,
+    minHeight: 140,
     padding: 20,
     justifyContent: 'flex-end',
     backgroundColor: colors.backgroundColor,
@@ -80,5 +80,9 @@ export default StyleSheet.create({
     fontSize: 12,
     letterSpacing: 2,
     color: colors.primary,
+  },
+
+  buttonContainer: {
+    marginVertical: 20,
   },
 })

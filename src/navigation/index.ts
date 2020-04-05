@@ -92,8 +92,8 @@ export interface AppNavigationProps {
 
 export { AppNavigation }
 
-export const modalBackButton = (): OptionsTopBarButton => ({
+export const modalBackButton = (white: boolean = false): OptionsTopBarButton => ({
   id: 'back',
   icon: backIcon,
-  color: colors.white,
+  color: white ? colors.white : colors.black,
 })

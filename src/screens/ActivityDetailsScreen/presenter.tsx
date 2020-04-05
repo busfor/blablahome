@@ -1,24 +1,23 @@
 import React, { memo } from 'react'
-import { Text, View, ScrollView } from 'react-native'
+import { Text, View, SafeAreaView, ScrollView } from 'react-native'
 import FastImage from 'react-native-fast-image'
 
 import { User as UserType, Participation as ParticipationType } from '../../AppPropTypes'
-import { ParticipantsCount, User, TintBackground, Touchable } from '../../component'
+import { User, TintBackground, Touchable, Button, Participation } from '../../component'
 import { getFrequency } from '../../constants/frequency'
 
 import styles from './styles'
-import Participation from './Components/Participation'
 
-export default memo(
-  ({ name, days, participantsCount, completedCount, description, user, participations, cover }: Props) => (
-    <View style={styles.container}>
-      <View style={styles.topContainer}>
-        {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
-        <TintBackground />
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.frequency}>{getFrequency(days)}</Text>
-      </View>
-      <ScrollView style={styles.content}>
+export default memo(({ name, days, description, user, participations, cover, onPressSeeAll }: Props) => (
+  <View style={styles.container}>
+    <View style={styles.topContainer}>
+      {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
+      <TintBackground />
+      <Text style={styles.title}>{name}</Text>
+      <Text style={styles.frequency}>{getFrequency(days)}</Text>
+    </View>
+    <ScrollView contentContainerStyle={styles.content}>
+      <SafeAreaView>
         <View style={styles.infoContainer}>
           <Text style={styles.description}>{description}</Text>
         </View>
@@ -28,29 +27,33 @@ export default memo(
         <User user={user} />
         <View style={styles.headerContainer}>
           <Text style={styles.header}>PARTICIPANTS {participations.length > 0 && `(${participations.length})`}</Text>
-          <Touchable style={styles.seeAll}>
-            <Text style={styles.seeAllText}>SEE ALL</Text>
-          </Touchable>
+          {participations.length > 0 && (
+            <Touchable onPress={onPressSeeAll} style={styles.seeAll}>
+              <Text style={styles.seeAllText}>SEE ALL</Text>
+            </Touchable>
+          )}
         </View>
-        {participations.map((participation, index) => (
+        {participations.slice(0, 3).map((participation, index) => (
           <Participation
             key={participation.id}
             participation={participation}
             isLast={index === participations.length - 1}
           />
         ))}
-      </ScrollView>
-    </View>
-  )
-)
+        <View style={styles.buttonContainer}>
+          <Button title='Take part' />
+        </View>
+      </SafeAreaView>
+    </ScrollView>
+  </View>
+))
 
 interface Props {
   name: string
   days: number
-  participantsCount: number
-  completedCount: number
   description: string
   user: UserType
   participations: ParticipationType[]
   cover: string
+  onPressSeeAll(): void
 }

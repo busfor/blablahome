@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { AccessToken, LoginManager } from 'react-native-fbsdk'
 import { Options } from 'react-native-navigation'
 import { useSelector, useDispatch } from 'react-redux'
+import { compose } from 'redux'
 
 import { RootState } from '../../redux/reducers'
 import { login, logout } from '../../redux/actions'
@@ -21,6 +22,7 @@ const ProfileScreen = () => {
         const data = await AccessToken.getCurrentAccessToken()
         const token = data?.accessToken || ''
         const response = await requestAuth(token)
+        console.log(response.data.user)
         dispatch(login(response.data.user))
       }
     } catch (error) {
