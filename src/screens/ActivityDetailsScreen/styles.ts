@@ -45,19 +45,19 @@ export default StyleSheet.create({
     fontSize: 18,
     fontFamily: FontFamily.regular,
     color: '#272424',
-    marginBottom: 16,
   },
 
   headerContainer: {
     marginTop: 20,
     paddingVertical: 16,
-    borderColor: colors.gray,
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   header: {
     color: colors.grayText,
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: FontFamily.regular,
     letterSpacing: 2,
   },
@@ -68,5 +68,17 @@ export default StyleSheet.create({
 
   bottomSpace: {
     paddingBottom: 20,
+  },
+
+  seeAll: {
+    padding: 16,
+    margin: -16,
+  },
+
+  seeAllText: {
+    fontFamily: FontFamily.medium,
+    fontSize: 12,
+    letterSpacing: 2,
+    color: colors.primary,
   },
 })

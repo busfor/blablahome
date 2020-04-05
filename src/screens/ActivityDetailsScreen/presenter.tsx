@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from 'react-native'
 import FastImage from 'react-native-fast-image'
 
 import { User as UserType, Participation as ParticipationType } from '../../AppPropTypes'
-import { ParticipantsCount, User, TintBackground } from '../../component'
+import { ParticipantsCount, User, TintBackground, Touchable } from '../../component'
 import { getFrequency } from '../../constants/frequency'
 
 import styles from './styles'
@@ -19,16 +19,18 @@ export default memo(
         <Text style={styles.frequency}>{getFrequency(days)}</Text>
       </View>
       <ScrollView style={styles.content}>
-        <View style={styles.countersContainer}>
-          <ParticipantsCount count={participantsCount} description='Participants' />
-          <ParticipantsCount count={completedCount} description='Completions' />
-        </View>
         <View style={styles.infoContainer}>
           <Text style={styles.description}>{description}</Text>
-          <User user={user} />
         </View>
         <View style={styles.headerContainer}>
-          <Text style={styles.header}>PARTICIPANTS {participations.length > 0 && participations.length}</Text>
+          <Text style={styles.header}>AUTHOR</Text>
+        </View>
+        <User user={user} />
+        <View style={styles.headerContainer}>
+          <Text style={styles.header}>PARTICIPANTS {participations.length > 0 && `(${participations.length})`}</Text>
+          <Touchable style={styles.seeAll}>
+            <Text style={styles.seeAllText}>SEE ALL</Text>
+          </Touchable>
         </View>
         {participations.map((participation, index) => (
           <Participation

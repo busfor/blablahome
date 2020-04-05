@@ -1,28 +1,33 @@
 import React, { memo } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 import CircularProgress from '../../../../component/CircularProgress'
+import colors from '../../../../colors'
+import { completedIcon } from '../../../../images'
 
 import styles from './styles'
 
 export default memo(({ title, progress, goal }: Props) => (
   <View style={styles.container}>
     <View style={styles.participationInfo}>
-      <CircularProgress
-        {...{
-          progress: progress,
-          radius: 12,
-          bgRingWidth: 3,
-          progressRingWidth: 3,
-          ringColor: '#ACACAC',
-          ringBgColor: '#F3F3F3',
-          textFontSize: 14,
-          textFontWeight: 'bold',
-          clockwise: true,
-          bgColor: 'gray',
-          startDegrees: 0,
-        }}
-      />
+      {progress < goal && (
+        <CircularProgress
+          {...{
+            progress: progress,
+            radius: 12,
+            bgRingWidth: 3,
+            progressRingWidth: 3,
+            ringColor: colors.primary,
+            ringBgColor: colors.backgroundColor,
+            textFontSize: 14,
+            textFontWeight: 'normal',
+            clockwise: true,
+            bgColor: 'gray',
+            startDegrees: 0,
+          }}
+        />
+      )}
+      {progress === goal && <Image source={completedIcon} />}
       <Text style={styles.title}>{title}</Text>
     </View>
     <View style={styles.progressContainer}>

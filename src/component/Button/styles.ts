@@ -5,8 +5,8 @@ import colors from '../../colors'
 
 export default StyleSheet.create({
   container: {
-    height: 72,
-    backgroundColor: colors.backgroundColor,
+    height: 64,
+    backgroundColor: colors.primary,
     borderRadius: 8,
   },
 
@@ -20,6 +20,6 @@ export default StyleSheet.create({
   title: {
     fontFamily: FontFamily.regular,
     fontSize: 18,
-    color: colors.black,
+    color: colors.white,
   },
 })

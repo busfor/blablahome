@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import { Participation as ParticipationType } from '../../../../AppPropTypes'
 import CircularProgress from '../../../../component/CircularProgress'
 import User from '../../../../component/User'
+import colors from '../../../../colors'
 
 import styles from './styles'
 
@@ -16,10 +17,10 @@ export default memo(({ participation, isLast }: Props) => (
         radius: 26,
         bgRingWidth: 4,
         progressRingWidth: 4,
-        ringColor: '#ACACAC',
-        ringBgColor: '#F3F3F3',
+        ringColor: colors.primary,
+        ringBgColor: colors.backgroundColor,
         textFontSize: 14,
-        textFontWeight: 'bold',
+        textFontWeight: 'normal',
         clockwise: true,
         bgColor: 'gray',
         startDegrees: 0,
