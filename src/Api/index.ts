@@ -1,3 +1,5 @@
+import { AccessToken } from 'react-native-fbsdk'
+
 import { Activity, Participation } from '../AppPropTypes'
 
 import { ApiRequestAuthResponseData } from './types'
@@ -30,3 +32,21 @@ export const fetchParticipationsForUser = (userId: string) =>
  */
 export const fetchParticipations = (activityId: string) =>
   getRequest<Participation[]>(`${BASE_API_URL}/activities/${activityId}/participations`, {})
+
+/**
+ * Join to the activity
+ * @param activityId - activity identifier
+ */
+export const joinActivitity = async (activityId: string) => {
+  const accessTokenData = await AccessToken.getCurrentAccessToken()
+  const token = accessTokenData?.accessToken || ''
+  return postRequest<Participation>(
+    `${BASE_API_URL}/activities/${activityId}/participations`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+}

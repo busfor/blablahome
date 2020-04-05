@@ -20,7 +20,7 @@ export default memo(({ activities, onPressActivity, handleRefresh, loading }: Pr
           frequency: activity.days,
           completedCount: activity.completions_count,
           participantsCount: activity.participants_count,
-          author: activity.user.name,
+          author: activity.user,
           cover: activity.cover,
           onPress: () => onPressActivity(activity),
           isLast: index === activities.length - 1,

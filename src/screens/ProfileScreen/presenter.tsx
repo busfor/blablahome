@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import { View, Text, SafeAreaView } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import { Touchable, ParticipantsCount, Section, Achievement } from '../../component'
 
@@ -7,7 +8,7 @@ import styles from './styles'
 
 const formatName = (name: string) => name.replace(' ', '\n')
 
-export default memo(({ loggedIn, username, handleLogin, handleLogout }: Props) => {
+export default memo(({ loggedIn, username, pictureUrl, handleLogin, handleLogout }: Props) => {
   if (!loggedIn)
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -24,7 +25,7 @@ export default memo(({ loggedIn, username, handleLogin, handleLogout }: Props) =
       <View style={styles.container}>
         <View style={styles.user}>
           <Text style={styles.username}>{formatName(username || '')}</Text>
-          <View style={styles.avatar} />
+          {pictureUrl && <FastImage source={{ uri: pictureUrl }} style={styles.avatar} />}
         </View>
         <Section title='ACTIVITIES'>
           <View style={styles.countersContainer}>
@@ -51,7 +52,8 @@ export default memo(({ loggedIn, username, handleLogin, handleLogout }: Props) =
 
 interface Props {
   loggedIn: boolean
-  username: string | null
+  username: string
+  pictureUrl: string | null
   handleLogin(): void
   handleLogout(): void
 }

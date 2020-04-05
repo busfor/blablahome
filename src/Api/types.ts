@@ -1,3 +1,5 @@
+import { User } from '../AppPropTypes'
+
 export interface ApiFetchActivitiesResponseData {
   id: string
   name: string
@@ -7,8 +9,5 @@ export interface ApiFetchActivitiesResponseData {
 }
 
 export interface ApiRequestAuthResponseData {
-  user: {
-    id: string
-    name: string
-  }
+  user: User
 }

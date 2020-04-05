@@ -1,6 +1,10 @@
 export interface User {
   id: string
+  user_id: string
   name: string
+  joins_count: number
+  completions_count: number
+  fails_count: number
 }
 
 export interface Picture {

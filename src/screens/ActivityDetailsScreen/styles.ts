@@ -44,7 +44,15 @@ export default StyleSheet.create({
   description: {
     fontSize: 18,
     fontFamily: FontFamily.regular,
-    color: '#272424',
+    color: colors.black,
+  },
+
+  emptyParticipations: {
+    fontSize: 18,
+    fontFamily: FontFamily.regular,
+    color: colors.black,
+    textAlign: 'center',
+    paddingVertical: 20,
   },
 
   headerContainer: {

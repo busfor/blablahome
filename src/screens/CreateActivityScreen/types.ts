@@ -13,4 +13,5 @@ export interface CreateActivityScreenPassProps {
   description?: string
   selectedImage?: ImagePickerImage | null
   selectedFrequency?: number | null
+  fetchActivities(): void
 }

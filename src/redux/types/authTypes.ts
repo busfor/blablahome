@@ -1,13 +1,12 @@
 import { AuthActionTypes } from '../actionTypes'
+import { User } from '../../AppPropTypes'
 
 export interface AuthState {
-  id: string | null
-  name: string | null
+  user: User
 }
 
 export interface AuthType {
-  id: string
-  name: string
+  user: User
 }
 
 export interface AuthLoginType {

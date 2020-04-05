@@ -2,18 +2,23 @@ import { AuthActionTypes } from '../actionTypes'
 import { AuthActionType, AuthState } from '../types/authTypes'
 
 export const initialState = {
-  id: null,
-  name: null,
+  user: {
+    completions_count: 0,
+    fails_count: 0,
+    id: '',
+    joins_count: 0,
+    name: '',
+    user_id: '',
+  },
 }
 
 export default function authReducer(state: AuthState = initialState, action: AuthActionType) {
   switch (action.type) {
     case AuthActionTypes.LOGIN: {
-      const { id, name } = action.payload
+      const { user } = action.payload
       return {
         ...state,
-        id,
-        name,
+        user,
       }
     }
 

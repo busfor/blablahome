@@ -21,7 +21,7 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
   const [activities, setActivities] = useState<Activity[]>([])
   const firstAppear = useRef(true)
 
-  const userId = useSelector((state: RootState) => state.auth.id)
+  const userId = useSelector((state: RootState) => state.auth.user.id)
 
   useEffect(() => {
     fetchData()

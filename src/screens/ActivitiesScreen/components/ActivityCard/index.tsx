@@ -6,11 +6,10 @@ import FastImage from 'react-native-fast-image'
 import { Touchable, ParticipantsCount, TintBackground } from '../../../../component'
 import { getFrequency } from '../../../../constants/frequency'
 import { useTimeout } from '../../../../hooks'
+import { User } from '../../../../AppPropTypes'
+import { getProfilePictureUrl } from '../../../../utils'
 
 import styles from './styles'
-
-const tempAvatar =
-  'https://storage.googleapis.com/blablahome/uploads/activities/covers/62bed2d2-1ce4-49c0-a068-031d69aa1117/0.jpeg?v=63753130513'
 
 export default memo(
   ({ title, frequency, participantsCount, completedCount, author, cover, isLast, onPress }: Props) => {
@@ -62,9 +61,9 @@ export default memo(
           <View style={styles.topContainer}>
             <View style={styles.authorContainer}>
               <View style={styles.avatarContainer}>
-                <FastImage style={styles.avatar} source={{ uri: tempAvatar }} />
+                <FastImage style={styles.avatar} source={{ uri: getProfilePictureUrl(author.user_id) }} />
               </View>
-              <Text style={styles.author}>{author}</Text>
+              <Text style={styles.author}>{author.name}</Text>
             </View>
           </View>
           <Animated.View style={[styles.infoContainer, { opacity: animatedValue }]} onLayout={onLayoutInfo}>
@@ -109,7 +108,7 @@ interface Props {
   frequency: number
   participantsCount: number
   completedCount: number
-  author: string
+  author: User
   isLast: boolean
   cover: string
   onPress(): void

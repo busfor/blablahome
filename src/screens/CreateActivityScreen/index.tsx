@@ -30,6 +30,7 @@ const CreateActivityScreen = ({
   description: propDescription,
   selectedImage: propSelectedImage,
   selectedFrequency: propSelectedFrequency,
+  fetchActivities,
 }: AppNavigationProps & CreateActivityScreenPassProps) => {
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, BACK_BUTTON_ID)
   useNavigationButtonPress(() => AppNavigation.dismissAllModals(), componentId, CANCEL_BUTTON_ID)
@@ -41,7 +42,7 @@ const CreateActivityScreen = ({
   const [uploading, setUploading] = useState(false)
   const [progress, setProgress] = useState(0)
 
-  const authorized = useSelector((state: RootState) => Boolean(state.auth.id))
+  const authorized = useSelector((state: RootState) => Boolean(state.auth.user.id))
 
   const keyboardViewEnabled = useMemo(
     () => step === CreateActivityStep.title || step === CreateActivityStep.description,
@@ -59,6 +60,7 @@ const CreateActivityScreen = ({
             description,
             selectedImage,
             selectedFrequency,
+            fetchActivities,
           },
         },
       }
@@ -72,7 +74,7 @@ const CreateActivityScreen = ({
         AppNavigation.push(componentId, layout)
       }
     },
-    [componentId, title, description, selectedImage, selectedFrequency]
+    [componentId, title, description, selectedImage, selectedFrequency, fetchActivities]
   )
 
   const submit = useCallback(async () => {
@@ -114,13 +116,15 @@ const CreateActivityScreen = ({
       BackgroundUpload.addListener('completed', uploadId, (data) => {
         setUploading(false)
         if (data.responseCode === 201) {
-          AppNavigation.dismissAllModals()
+          fetchActivities()
+          return AppNavigation.dismissAllModals()
         }
+        showError('Something went wrong please try again later')
       })
     } catch {
       setUploading(false)
     }
-  }, [title, description, selectedImage, selectedFrequency, authorized])
+  }, [title, description, selectedImage, selectedFrequency, authorized, fetchActivities])
 
   const onPressSubmit = useCallback(() => {
     switch (step) {

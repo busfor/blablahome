@@ -5,7 +5,7 @@ import { noop } from 'lodash'
 
 import { Activity, Participation } from '../../AppPropTypes'
 import { modalBackButton, AppNavigationProps, AppNavigation } from '../../navigation/index'
-import { fetchParticipations } from '../../Api'
+import { fetchParticipations, joinActivitity } from '../../Api'
 import colors from '../../colors'
 import { Screens } from '..'
 
@@ -33,6 +33,14 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
     })
   }, [participations])
 
+  const onPressTakePart = useCallback(() => {
+    joinActivitity(id)
+      .then((response) => {
+        setParticipations([response.data, ...participations])
+      })
+      .catch(noop)
+  }, [id, participations])
+
   useEffect(() => {
     fetchParticipations(id)
       .then((response) => {
@@ -59,6 +67,7 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
         participations,
         cover,
         onPressSeeAll,
+        onPressTakePart,
       }}
     />
   )
