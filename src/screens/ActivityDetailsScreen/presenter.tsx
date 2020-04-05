@@ -9,7 +9,19 @@ import { getFrequency } from '../../constants/frequency'
 import styles from './styles'
 
 export default memo(
-  ({ name, days, description, user, participations, cover, onPressSeeAll, onPressTakePart }: Props) => (
+  ({
+    name,
+    days,
+    description,
+    user,
+    participations,
+    cover,
+    canParticipateIn,
+    canCheckIn,
+    onPressSeeAll,
+    onPressTakePart,
+    onPressCheckIn,
+  }: Props) => (
     <View style={styles.container}>
       <View style={styles.topContainer}>
         {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
@@ -42,9 +54,14 @@ export default memo(
             />
           ))}
           {participations.length === 0 && <Text style={styles.emptyParticipations}>You might be the first!</Text>}
-          <View style={styles.buttonContainer}>
-            <Button onPress={onPressTakePart} title='Take part' />
-          </View>
+          {(canParticipateIn || canCheckIn) && (
+            <View style={styles.buttonContainer}>
+              <Button
+                onPress={canCheckIn ? onPressCheckIn : onPressTakePart}
+                title={canCheckIn ? 'Check in' : 'Take part'}
+              />
+            </View>
+          )}
         </SafeAreaView>
       </ScrollView>
     </View>
@@ -58,6 +75,9 @@ interface Props {
   user: UserType
   participations: ParticipationType[]
   cover: string
+  canParticipateIn: boolean
+  canCheckIn: boolean
   onPressSeeAll(): void
   onPressTakePart(): void
+  onPressCheckIn(): void
 }
