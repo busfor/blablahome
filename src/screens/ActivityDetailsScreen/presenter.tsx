@@ -40,7 +40,7 @@ export default memo(
           <User user={user} />
           <View style={styles.headerContainer}>
             <Text style={styles.header}>PARTICIPANTS {participations.length > 0 && `(${participations.length})`}</Text>
-            {participations.length > 0 && (
+            {participations.length > 3 && (
               <Touchable onPress={onPressSeeAll} style={styles.seeAll}>
                 <Text style={styles.seeAllText}>SEE ALL</Text>
               </Touchable>
