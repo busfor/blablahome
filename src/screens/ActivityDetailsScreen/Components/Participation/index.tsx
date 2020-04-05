@@ -19,13 +19,9 @@ export default memo(({ participation, isLast }: Props) => (
         progressRingWidth: 4,
         ringColor: colors.primary,
         ringBgColor: colors.backgroundColor,
-        textFontSize: 14,
-        textFontWeight: 'normal',
-        clockwise: true,
         bgColor: 'gray',
         startDegrees: 0,
         withText: true,
-        style: styles.progress,
       }}
     />
   </View>

@@ -10,8 +10,4 @@ export default StyleSheet.create({
   bottomSpace: {
     paddingBottom: 20,
   },
-
-  progress: {
-
-  }
 })

@@ -19,9 +19,6 @@ export default memo(({ title, progress, goal }: Props) => (
             progressRingWidth: 3,
             ringColor: colors.primary,
             ringBgColor: colors.backgroundColor,
-            textFontSize: 14,
-            textFontWeight: 'normal',
-            clockwise: true,
             bgColor: 'gray',
             startDegrees: 0,
           }}

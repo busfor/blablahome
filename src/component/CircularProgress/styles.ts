@@ -25,5 +25,7 @@ export default StyleSheet.create({
   },
   display: {
     position: 'absolute',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 })
