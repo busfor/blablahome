@@ -98,15 +98,17 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
 }
 
 ActivityDetailsScreen.options = (): Options => ({
+  statusBar: {
+    drawBehind: true,
+    backgroundColor: 'transparent',
+    style: 'light',
+  },
   topBar: {
     background: {
       color: 'transparent',
     },
     drawBehind: true,
     leftButtons: [modalBackButton(true)],
-  },
-  statusBar: {
-    backgroundColor: colors.backgroundColor,
   },
 })
 
