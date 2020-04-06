@@ -4,6 +4,7 @@ import FastImage from 'react-native-fast-image'
 
 import { Touchable, ParticipantsCount, Section, Achievement } from '../../component'
 import { User } from '../../AppPropTypes'
+import NoInfo from '../../component/NoInfo'
 import { getProfilePictureUrl } from '../../utils'
 
 import styles from './styles'
@@ -15,11 +16,7 @@ export default memo(({ user, handleLogin, handleLogout }: Props) => {
   if (!user.id) {
     return (
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <Touchable onPress={handleLogin} style={styles.fbButton}>
-            <Text>Login</Text>
-          </Touchable>
-        </View>
+        <NoInfo buttonText={'Login'} text={'To view your progress please log in'} onPress={handleLogin} />
       </SafeAreaView>
     )
   }

@@ -1,19 +1,24 @@
 import React, { useEffect, useMemo, useState, useCallback, useRef } from 'react'
+import { Platform } from 'react-native'
+import { AccessToken, LoginManager } from 'react-native-fbsdk'
 import { Options } from 'react-native-navigation'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 
 import { Participation } from '../../AppPropTypes'
+import { login } from '../../redux/actions'
 import { RootState } from '../../redux/reducers'
-import { fetchParticipationsForUser } from '../../Api'
+import { fetchParticipationsForUser, requestAuth } from '../../Api'
 import colors from '../../colors'
 import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { CreateCheckinStep } from '../CreateCheckinScreen/types'
-import { Screens } from '../index'
+import { Screens } from '..'
+import NoInfo from '../../component/NoInfo'
 
 import Presenter from './presenter'
 
 const ProgressScreen = ({ componentId }: AppNavigationProps) => {
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [participations, setParticipations] = useState<Participation[]>([])
   const firstAppear = useRef(true)
@@ -86,6 +91,38 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
       ),
     [participations]
   )
+
+  // TODO: move to shared action
+  const handleLogin = useCallback(async () => {
+    try {
+      if (Platform.OS === 'android') {
+        LoginManager.setLoginBehavior('web_only')
+      }
+      const result = await LoginManager.logInWithPermissions(['public_profile'])
+      if (!result.error && !result.isCancelled) {
+        const data = await AccessToken.getCurrentAccessToken()
+        const token = data?.accessToken || ''
+        const response = await requestAuth(token)
+        dispatch(login({ user: response.data.user }))
+      }
+    } catch (error) {
+      console.log('error', error)
+    }
+  }, [])
+
+  if (participations.length === 0) {
+    return (
+      <NoInfo
+        text={'Join any activity and share your progress with others'}
+        buttonText={'Explore activities'}
+        onPress={() => AppNavigation.changeTab(componentId, 1)}
+      />
+    )
+  }
+
+  if (!profile.id) {
+    return <NoInfo buttonText={'Login'} text={'To view your progress please log in'} onPress={handleLogin} />
+  }
 
   return <Presenter {...{ inProgress, completed, failed, handleRefresh, loading, handleAcivityPress }} />
 }

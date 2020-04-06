@@ -23,6 +23,13 @@ const showOverlay = (layout: Layout) => {
   Navigation.showOverlay(layout).then(noop).catch(noop)
 }
 
+const changeTab = (componentId: string, tabIndex: number) =>
+  Navigation.mergeOptions(componentId, {
+    bottomTabs: {
+      currentTabIndex: tabIndex,
+    },
+  })
+
 const dismissOverlay = (componentId: string) => {
   Navigation.dismissOverlay(componentId).then(noop).catch(noop)
 }
@@ -84,6 +91,7 @@ const AppNavigation = {
   pop,
   push,
   showModal,
+  changeTab,
 }
 
 export interface AppNavigationProps {

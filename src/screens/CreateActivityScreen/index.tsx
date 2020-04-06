@@ -4,7 +4,7 @@ import { Options, Layout } from 'react-native-navigation'
 import { useNavigationButtonPress } from 'react-native-navigation-hooks'
 import { Image as ImagePickerImage } from 'react-native-image-crop-picker'
 import { useSelector } from 'react-redux'
-import BackgroundUpload, { MultipartUploadOptions } from 'react-native-background-upload'
+import BackgroundUpload, { CompletedData, MultipartUploadOptions, ProgressData } from 'react-native-background-upload'
 import { AccessToken } from 'react-native-fbsdk'
 
 import { AppNavigationProps, AppNavigation } from '../../navigation'
@@ -102,7 +102,7 @@ const CreateActivityScreen = ({
         parameters: {
           name: title,
           description,
-          days: selectedFrequency,
+          days: `${selectedFrequency}`,
         },
         notification: {
           enabled: false,
@@ -110,10 +110,10 @@ const CreateActivityScreen = ({
       }
 
       const uploadId = await BackgroundUpload.startUpload(options)
-      BackgroundUpload.addListener('progress', uploadId, (data) => setProgress(data.progress))
+      BackgroundUpload.addListener('progress', uploadId, (data: ProgressData) => setProgress(data.progress))
       BackgroundUpload.addListener('error', uploadId, () => setUploading(false))
       BackgroundUpload.addListener('cancelled', uploadId, () => setUploading(false))
-      BackgroundUpload.addListener('completed', uploadId, (data) => {
+      BackgroundUpload.addListener('completed', uploadId, (data: CompletedData) => {
         setUploading(false)
         if (data.responseCode === 201) {
           fetchActivities()
