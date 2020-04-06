@@ -75,14 +75,14 @@ const CreateCheckinScreen = ({
         url: endpoints.checkin.replace('%ACTIVITY_ID%', participation.activity.id),
         path,
         method: 'POST',
-        field: 'cover',
+        field: 'photo',
         type: 'multipart',
         headers: {
           'content-type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
         parameters: {
-          description,
+          message: description,
         },
         notification: {
           enabled: false,
