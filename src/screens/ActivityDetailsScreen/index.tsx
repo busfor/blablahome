@@ -13,7 +13,11 @@ import { CreateCheckinStep } from '../CreateCheckinScreen/types'
 
 import Presenter from './presenter'
 
-const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & ActivityDetailsScreenProps) => {
+const ActivityDetailsScreen = ({
+  componentId,
+  activity,
+  fetchProgress,
+}: AppNavigationProps & ActivityDetailsScreenProps) => {
   const { id, name, days, description, user, cover } = activity
 
   const [participations, setParticipations] = useState<Participation[]>([])
@@ -72,13 +76,14 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
               passProps: {
                 participation,
                 step: CreateCheckinStep.media,
+                fetchProgress,
               },
             },
           },
         ],
       },
     })
-  }, [participations])
+  }, [participations, fetchProgress])
 
   useEffect(() => {
     fetchParticipations(id)
@@ -132,6 +137,7 @@ ActivityDetailsScreen.options = (): Options => ({
 
 interface ActivityDetailsScreenProps {
   activity: Activity
+  fetchProgress?: () => void
 }
 
 export default ActivityDetailsScreen

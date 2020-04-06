@@ -13,4 +13,5 @@ export interface CreateCheckinScreenPassProps {
   description?: string
   selectedImage?: ImagePickerImage | null
   participation: Participation
+  fetchProgress?: () => void
 }

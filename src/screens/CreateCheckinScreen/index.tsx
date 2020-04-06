@@ -29,6 +29,7 @@ const CreateCheckinScreen = ({
   participation,
   description: propDescription = '',
   selectedImage: propSelectedImage,
+  fetchProgress,
 }: AppNavigationProps & CreateCheckinScreenPassProps) => {
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, BACK_BUTTON_ID)
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, CANCEL_BUTTON_ID)
@@ -95,6 +96,9 @@ const CreateCheckinScreen = ({
       BackgroundUpload.addListener('completed', uploadId, (data: CompletedData) => {
         setUploading(false)
         if (data.responseCode === 201) {
+          if (fetchProgress) {
+            fetchProgress()
+          }
           return AppNavigation.dismissAllModals()
         } else {
           showError('Something went wrong please try again later')
@@ -103,7 +107,7 @@ const CreateCheckinScreen = ({
     } catch {
       setUploading(false)
     }
-  }, [description, selectedImage, authorized, participation])
+  }, [description, selectedImage, authorized, participation, fetchProgress])
 
   const onPressSubmit = useCallback(() => {
     switch (step) {

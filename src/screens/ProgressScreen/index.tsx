@@ -53,22 +53,26 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
     firstAppear.current = false
   }, componentId)
 
-  const handleAcivityPress = useCallback((participation: Participation) => {
-    AppNavigation.showModal({
-      stack: {
-        children: [
-          {
-            component: {
-              name: Screens.ActivityDetailsScreen,
-              passProps: {
-                activity: participation.activity,
+  const handleAcivityPress = useCallback(
+    (participation: Participation) => {
+      AppNavigation.showModal({
+        stack: {
+          children: [
+            {
+              component: {
+                name: Screens.ActivityDetailsScreen,
+                passProps: {
+                  activity: participation.activity,
+                  fetchProgress: fetchData,
+                },
               },
             },
-          },
-        ],
-      },
-    })
-  }, [])
+          ],
+        },
+      })
+    },
+    [fetchData]
+  )
 
   const inProgress = useMemo(
     () =>
