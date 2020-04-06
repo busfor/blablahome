@@ -5,7 +5,6 @@ import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 48,
     padding: 20,
   },
 
