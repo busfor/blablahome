@@ -49,13 +49,19 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
   }, componentId)
 
   const handleAcivityPress = useCallback((participation: Participation) => {
-    AppNavigation.push(componentId, {
-      component: {
-        name: Screens.createCheckinScreen,
-        passProps: {
-          participation,
-          step: CreateCheckinStep.media,
-        },
+    AppNavigation.showModal({
+      stack: {
+        children: [
+          {
+            component: {
+              name: Screens.createCheckinScreen,
+              passProps: {
+                participation,
+                step: CreateCheckinStep.media,
+              },
+            },
+          },
+        ],
       },
     })
   }, [])

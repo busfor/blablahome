@@ -30,8 +30,8 @@ const CreateCheckinScreen = ({
   description: propDescription = '',
   selectedImage: propSelectedImage,
 }: AppNavigationProps & CreateCheckinScreenPassProps) => {
-  useNavigationButtonPress(() => AppNavigation.pop(componentId), componentId, BACK_BUTTON_ID)
-  useNavigationButtonPress(() => AppNavigation.popToRoot(componentId), componentId, CANCEL_BUTTON_ID)
+  useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, BACK_BUTTON_ID)
+  useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, CANCEL_BUTTON_ID)
 
   const [description, setDescription] = useState(propDescription || '')
   const [selectedImage, setSelectedImage] = useState<ImagePickerImage | null>(propSelectedImage || null)

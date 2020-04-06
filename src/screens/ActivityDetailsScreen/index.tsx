@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux'
 import { Activity, Participation } from '../../AppPropTypes'
 import { modalBackButton, AppNavigationProps, AppNavigation } from '../../navigation/index'
 import { fetchParticipations, joinActivitity } from '../../Api'
-import colors from '../../colors'
 import { Screens } from '..'
 import { RootState } from '../../redux/reducers'
+import { CreateCheckinStep } from '../CreateCheckinScreen/types'
 
 import Presenter from './presenter'
 
@@ -59,8 +59,23 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
   }, [id, participations])
 
   const onPressCheckIn = useCallback(() => {
-    alert('check in')
-  }, [])
+    const participation = participations.find((item) => item.user.id === userId)
+    AppNavigation.showModal({
+      stack: {
+        children: [
+          {
+            component: {
+              name: Screens.createCheckinScreen,
+              passProps: {
+                participation,
+                step: CreateCheckinStep.media,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }, [participations])
 
   useEffect(() => {
     fetchParticipations(id)
