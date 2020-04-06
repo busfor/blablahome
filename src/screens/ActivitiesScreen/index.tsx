@@ -100,6 +100,7 @@ ActivitiesScreen.options = (): Options => ({
       text: 'Activities',
     },
     rightButtons: [{ id: CREATE_BUTTON_ID, text: 'Create' }],
+    visible: false,
   },
 })
 
