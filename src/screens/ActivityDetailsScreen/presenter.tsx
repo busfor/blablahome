@@ -26,7 +26,9 @@ export default memo(
       <View style={styles.topContainer}>
         {cover && <FastImage style={styles.cover} source={{ uri: cover }} />}
         <TintBackground />
-        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>
+          {name}
+        </Text>
         <Text style={styles.frequency}>{getFrequency(days)}</Text>
       </View>
       <ScrollView contentContainerStyle={styles.content}>

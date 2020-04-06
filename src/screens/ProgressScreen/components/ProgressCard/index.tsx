@@ -13,6 +13,7 @@ export default memo(({ title, progress, goal }: Props) => (
       {progress < goal && (
         <CircularProgress
           {...{
+            total: goal,
             progress: progress,
             radius: 12,
             bgRingWidth: 3,
@@ -28,7 +29,7 @@ export default memo(({ title, progress, goal }: Props) => (
       <Text style={styles.title}>{title}</Text>
     </View>
     <View style={styles.progressContainer}>
-      <Text style={styles.progress}>{progress}</Text>
+      <Text style={[styles.progress, progress < goal && styles.activeProgress]}>{progress}</Text>
       <Text style={[styles.progress, styles.spacer]}>/</Text>
       <Text style={styles.progress}>{goal}</Text>
     </View>

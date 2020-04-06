@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { FontFamily } from '../../../../constants/fonts'
+import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
@@ -16,12 +17,12 @@ export default StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 28 / 2,
-    backgroundColor: '#CCCCCC',
+    backgroundColor: colors.gray,
   },
 
   username: {
     fontSize: 16,
-    color: '#272424',
+    color: colors.black,
     marginLeft: 12,
     fontFamily: FontFamily.regular,
   },
@@ -45,5 +46,18 @@ export default StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 10,
+  },
+
+  message: {
+    fontFamily: FontFamily.regular,
+    fontSize: 16,
+    color: colors.black,
+    marginTop: 8,
+    marginLeft: 39,
+  },
+
+  quote: {
+    fontFamily: FontFamily.medium,
+    fontSize: 24,
   },
 })

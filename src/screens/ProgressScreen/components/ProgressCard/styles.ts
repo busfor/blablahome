@@ -22,6 +22,7 @@ export default StyleSheet.create({
   },
 
   title: {
+    color: colors.black,
     fontSize: 18,
     fontFamily: FontFamily.regular,
     marginLeft: 8,
@@ -33,8 +34,13 @@ export default StyleSheet.create({
   },
 
   progress: {
+    color: colors.black,
     fontSize: 20,
     fontFamily: FontFamily.regular,
+  },
+
+  activeProgress: {
+    color: colors.primary,
   },
 
   spacer: {

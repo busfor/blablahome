@@ -53,6 +53,23 @@ Navigation.events().registerAppLaunchedListener(() => {
               children: [
                 {
                   component: {
+                    name: Screens.feedScreen,
+                  },
+                },
+              ],
+              options: {
+                bottomTab: {
+                  text: 'Feed',
+                  icon: feedIcon,
+                },
+              },
+            },
+          },
+          {
+            stack: {
+              children: [
+                {
+                  component: {
                     name: Screens.ActivitiesScreen,
                   },
                 },
@@ -79,23 +96,6 @@ Navigation.events().registerAppLaunchedListener(() => {
                 bottomTab: {
                   text: 'Progress',
                   icon: progressIcon,
-                },
-              },
-            },
-          },
-          {
-            stack: {
-              children: [
-                {
-                  component: {
-                    name: Screens.feedScreen,
-                  },
-                },
-              ],
-              options: {
-                bottomTab: {
-                  text: 'Feed',
-                  icon: feedIcon,
                 },
               },
             },

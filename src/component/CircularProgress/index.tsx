@@ -51,6 +51,7 @@ const renderThirdLayer = (
 
 const CircularProgress = ({
   progress,
+  total,
   radius,
   bgRingWidth,
   progressRingWidth,
@@ -61,7 +62,7 @@ const CircularProgress = ({
   withText = false,
   style,
 }: Props) => {
-  const percent = (progress / 7) * 100
+  const percent = (progress / total) * 100
   const commonStyles = {
     width: radius * 2,
     height: radius * 2,
@@ -138,13 +139,18 @@ const CircularProgress = ({
         innerRingStyle,
         startDegrees
       )}
-      {withText && <Text style={[styles.display]}>{progress}/7</Text>}
+      {withText && (
+        <Text style={[styles.display]}>
+          {progress}/{total}
+        </Text>
+      )}
     </View>
   )
 }
 
 interface Props {
   progress: number
+  total: number
   radius: number
   bgRingWidth: number
   progressRingWidth: number

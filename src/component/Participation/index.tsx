@@ -13,6 +13,7 @@ export default memo(({ participation, isLast }: Props) => (
     <User user={participation.user} />
     <CircularProgress
       {...{
+        total: participation.activity.days,
         progress: participation.progress,
         radius: 26,
         bgRingWidth: 4,

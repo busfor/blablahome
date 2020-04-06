@@ -14,7 +14,7 @@ export default StyleSheet.create({
 
   topContainer: {
     flex: 1,
-    minHeight: 140,
+    minHeight: 160,
     padding: 20,
     justifyContent: 'flex-end',
     backgroundColor: colors.backgroundColor,

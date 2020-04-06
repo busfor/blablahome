@@ -95,7 +95,7 @@ const CreateCheckinScreen = ({
       BackgroundUpload.addListener('completed', uploadId, (data: CompletedData) => {
         setUploading(false)
         if (data.responseCode === 201) {
-          return AppNavigation.popToRoot(componentId)
+          return AppNavigation.dismissAllModals()
         } else {
           showError('Something went wrong please try again later')
         }
