@@ -118,7 +118,7 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
       <NoInfo
         text={'Join any activity and share your progress with others'}
         buttonText={'Explore activities'}
-        onPress={() => AppNavigation.changeTab(componentId, 1)}
+        onPress={() => AppNavigation.changeTab(componentId, 0)}
       />
     )
   }

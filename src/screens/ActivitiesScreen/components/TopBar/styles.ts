@@ -5,8 +5,10 @@ import colors from '../../../../colors'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 0,
     padding: 20,
+    marginHorizontal: -20,
+    marginTop: -20,
+    backgroundColor: colors.white,
   },
 
   infoTitle: {
