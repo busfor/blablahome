@@ -7,7 +7,9 @@ import { Participation } from '../../AppPropTypes'
 import { RootState } from '../../redux/reducers'
 import { fetchParticipationsForUser } from '../../Api'
 import colors from '../../colors'
-import { AppNavigationProps } from '../../navigation'
+import { AppNavigation, AppNavigationProps } from '../../navigation'
+import { CreateCheckinStep } from '../CreateCheckinScreen/types'
+import { Screens } from '../index'
 
 import Presenter from './presenter'
 
@@ -46,6 +48,18 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
     firstAppear.current = false
   }, componentId)
 
+  const handleAcivityPress = useCallback((participation: Participation) => {
+    AppNavigation.push(componentId, {
+      component: {
+        name: Screens.createCheckinScreen,
+        passProps: {
+          participation,
+          step: CreateCheckinStep.media,
+        },
+      },
+    })
+  }, [])
+
   const inProgress = useMemo(
     () =>
       participations.filter(
@@ -67,7 +81,7 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
     [participations]
   )
 
-  return <Presenter {...{ inProgress, completed, failed, handleRefresh, loading }} />
+  return <Presenter {...{ inProgress, completed, failed, handleRefresh, loading, handleAcivityPress }} />
 }
 
 ProgressScreen.options = (): Options => ({

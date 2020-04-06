@@ -6,11 +6,11 @@ import { Participation } from '../../AppPropTypes'
 import styles from './styles'
 import ProgressSection from './components/ProgressSection'
 
-export default memo(({ inProgress, completed, failed, loading, handleRefresh }: Props) => (
+export default memo(({ inProgress, completed, failed, loading, handleRefresh, handleAcivityPress }: Props) => (
   <SafeAreaView style={styles.safeArea}>
     <Text style={styles.title}>Progress</Text>
     <ScrollView refreshControl={<RefreshControl refreshing={loading} onRefresh={handleRefresh} tintColor={'black'} />}>
-      <ProgressSection participations={inProgress} title='STARTED' />
+      <ProgressSection participations={inProgress} title='STARTED' handleAcivityPress={handleAcivityPress} />
       <ProgressSection participations={completed} title='COMPLETED' />
       <ProgressSection participations={failed} title='FAILED' />
     </ScrollView>
@@ -23,4 +23,5 @@ interface Props {
   failed: Participation[]
   loading: boolean
   handleRefresh(): void
+  handleAcivityPress(participation: Participation): void
 }
