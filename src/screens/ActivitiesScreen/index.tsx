@@ -71,6 +71,7 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
                   name: Screens.createActivityScreen,
                   passProps: {
                     step: CreateActivityStep.title,
+                    fetchActivities: fetchData,
                   },
                 },
               },
