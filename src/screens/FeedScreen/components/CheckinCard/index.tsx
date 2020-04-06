@@ -15,7 +15,9 @@ export default memo(({ checkin }: Props) => (
       <Text> has updated progress</Text>
     </View>
     <View style={styles.activity}>
-      <Text style={styles.activityText}>{checkin.participation.activity.name}</Text>
+      <Text style={styles.activityText}>
+        {checkin.participation.activity.name} {checkin.progress}/{checkin.participation.activity.days}
+      </Text>
     </View>
     {checkin.photo && (
       <View style={styles.photos}>
