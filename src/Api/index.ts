@@ -5,33 +5,42 @@ import { Activity, Checkin, Participation } from '../AppPropTypes'
 import { ApiRequestAuthResponseData } from './types'
 import { BASE_API_URL, getRequest, postRequest } from './utils'
 
+export const endpoints = {
+  login: `${BASE_API_URL}/users`,
+  activities: `${BASE_API_URL}/activities`,
+  checkin: `${BASE_API_URL}/activities/%ACTIVITY_ID%/checkin`,
+  activityParticipations: `${BASE_API_URL}/activities/%ACTIVITY_ID%/participations`,
+  userParticipations: `${BASE_API_URL}/users/%USER_ID%/participations`,
+  checkins: `${BASE_API_URL}/checkins`,
+}
+
 /**
  * Login with fb accessToken
  * @param accessToken - Facebook access token
  */
 export const requestAuth = (accessToken: string) =>
-  postRequest<ApiRequestAuthResponseData>(`${BASE_API_URL}/users`, {
+  postRequest<ApiRequestAuthResponseData>(endpoints.login, {
     access_token: accessToken,
   })
 
 /**
  * Fetch activities
  */
-export const fetchActivities = () => getRequest<Activity[]>(`${BASE_API_URL}/activities`, {})
+export const fetchActivities = () => getRequest<Activity[]>(endpoints.activities, {})
 
 /**
  * Fetch participations for user
  * @param userId - user ID
  */
 export const fetchParticipationsForUser = (userId: string) =>
-  getRequest<Participation[]>(`${BASE_API_URL}/users/${userId}/participations`)
+  getRequest<Participation[]>(endpoints.userParticipations.replace('%USER_ID%', userId))
 
 /**
  * Fetch participations for activity
  * @param activityId - activity identifier
  */
 export const fetchParticipations = (activityId: string) =>
-  getRequest<Participation[]>(`${BASE_API_URL}/activities/${activityId}/participations`, {})
+  getRequest<Participation[]>(endpoints.activityParticipations.replace('%ACTIVITY_ID%', activityId), {})
 
 /**
  * Join to the activity
@@ -41,7 +50,21 @@ export const joinActivitity = async (activityId: string) => {
   const accessTokenData = await AccessToken.getCurrentAccessToken()
   const token = accessTokenData?.accessToken || ''
   return postRequest<Participation>(
-    `${BASE_API_URL}/activities/${activityId}/participations`,
+    endpoints.activityParticipations.replace('%ACTIVITY_ID%', activityId),
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+}
+
+export const checkin = async (activityId: string) => {
+  const accessTokenData = await AccessToken.getCurrentAccessToken()
+  const token = accessTokenData?.accessToken || ''
+  return postRequest<Participation>(
+    endpoints.checkin.replace('%ACTIVITY_ID%', activityId),
     {},
     {
       headers: {
@@ -54,4 +77,4 @@ export const joinActivitity = async (activityId: string) => {
 /**
  * Fetch check-ins
  */
-export const fetchCheckins = () => getRequest<Checkin[]>(`${BASE_API_URL}/checkins`, {})
+export const fetchCheckins = () => getRequest<Checkin[]>(endpoints.checkins, {})

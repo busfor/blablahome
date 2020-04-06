@@ -1,10 +1,11 @@
 import React, { memo } from 'react'
+import { noop } from 'lodash'
 
 import { Participation } from '../../../../AppPropTypes'
 import ProgressCard from '../ProgressCard'
-import { Section } from '../../../../component'
+import { Section, Touchable } from '../../../../component'
 
-export default memo(({ participations, title }: Props) => {
+export default memo(({ participations, title, handleAcivityPress }: Props) => {
   if (participations.length === 0) {
     return null
   }
@@ -12,14 +13,19 @@ export default memo(({ participations, title }: Props) => {
   return (
     <Section {...{ title }}>
       {participations.map((participation) => (
-        <ProgressCard
+        <Touchable
+          onPress={() => (handleAcivityPress ? handleAcivityPress(participation) : noop)}
           key={participation.id}
-          {...{
-            title: participation.activity.name,
-            progress: participation.progress,
-            goal: participation.activity.days,
-          }}
-        />
+        >
+          <ProgressCard
+            {...{
+              title: participation.activity.name,
+              progress: participation.progress,
+              goal: participation.activity.days,
+              handleAcivityPress,
+            }}
+          />
+        </Touchable>
       ))}
     </Section>
   )
@@ -28,4 +34,5 @@ export default memo(({ participations, title }: Props) => {
 interface Props {
   participations: Participation[]
   title: string
+  handleAcivityPress?(participation: Participation): void
 }
