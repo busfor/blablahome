@@ -90,6 +90,7 @@ export default memo(
                 style={{ ...StyleSheet.absoluteFillObject }}
               />
             )}
+            <TintBackground />
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.frequency}>{getFrequency(frequency)}</Text>
             <View style={styles.countersContainer}>
