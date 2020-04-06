@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { Options } from 'react-native-navigation'
 import { useNavigationButtonPress, useNavigationComponentDidAppear } from 'react-native-navigation-hooks'
 import { Alert } from 'react-native'
-import { AccessToken } from 'react-native-fbsdk'
 import { useSelector } from 'react-redux'
 
 import { AppNavigation, AppNavigationProps } from '../../navigation'
