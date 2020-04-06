@@ -59,10 +59,9 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
         children: [
           {
             component: {
-              name: Screens.createCheckinScreen,
+              name: Screens.ActivityDetailsScreen,
               passProps: {
-                participation,
-                step: CreateCheckinStep.media,
+                activity: participation.activity,
               },
             },
           },
