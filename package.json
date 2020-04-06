@@ -11,6 +11,7 @@
     "clean-install": "watchman watch-del-all && rm -rf ./node_modules && rm -rf $TMPDIR/react-* && bundle install && yarn && cd android && ./gradlew clean && cd .. && cd ios && rm -rf Pods && pod install"
   },
   "dependencies": {
+    "@merryjs/photo-viewer": "^3.1.4",
     "@react-native-community/async-storage": "^1.9.0",
     "@react-native-community/blur": "^3.4.1",
     "axios": "^0.19.2",

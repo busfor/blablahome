@@ -30,7 +30,7 @@ const ActivityDetailsScreen = ({ componentId, activity }: AppNavigationProps & A
 
   const canCheckIn = useMemo(() => {
     const participation = participations.find((item) => item.user.id === userId)
-    return participation && participation.progress < activity.days
+    return (participation && participation.progress < activity.days) || false
   }, [activity, userId, participations])
 
   const onPressSeeAll = useCallback(() => {
