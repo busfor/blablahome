@@ -27,5 +27,6 @@ export default StyleSheet.create({
   points: {
     fontSize: 16,
     fontFamily: FontFamily.regular,
+    color: '#28D74F',
   },
 })

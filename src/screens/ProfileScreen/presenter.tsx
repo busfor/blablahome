@@ -7,6 +7,7 @@ import { User } from '../../AppPropTypes'
 import { getProfilePictureUrl } from '../../utils'
 
 import styles from './styles'
+import { weekAchievement, checkinAchievement, joinAchievement } from './assets/index'
 
 const formatName = (name: string) => name.replace(' ', '\n')
 
@@ -37,11 +38,9 @@ export default memo(({ user, handleLogin, handleLogout }: Props) => {
           </View>
         </Section>
         <Section title='ACHIEVEMENTS'>
-          <>
-            <Achievement title='Athlete: 5 streak weekly sports activities' points={25} />
-            <Achievement title='Waterlover: 2 activities completed' points={10} />
-            <Achievement title='Joining BlaBlaHome' points={5} />
-          </>
+          <Achievement title='2 weeks in a row' points={25} image={weekAchievement} />
+          <Achievement title='5 checkin in a row' points={10} image={checkinAchievement} />
+          <Achievement title='Joining BlaBlaHome' points={5} image={joinAchievement} />
         </Section>
         <Touchable onPress={handleLogout} style={styles.fbButton}>
           <Text>Logout</Text>
