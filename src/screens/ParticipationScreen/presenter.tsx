@@ -15,8 +15,10 @@ export default memo(
       activity: { cover, name, days },
     },
     progress,
+    canCheckIn,
     checkins,
     onPressCheckin,
+    onPressAdd,
   }: Props) => {
     const [width, setWidth] = useState(0)
 
@@ -56,11 +58,13 @@ export default memo(
               <Text style={styles.header}>MY PROGRESS</Text>
             </View>
             <View style={styles.checkins} onLayout={onLayoutCheckins}>
-              <Touchable style={[styles.checkinContainer, { width, height: width }]}>
-                <View style={styles.add}>
-                  <Image source={plusIcon} />
-                </View>
-              </Touchable>
+              {canCheckIn && (
+                <Touchable onPress={onPressAdd} style={[styles.checkinContainer, { width, height: width }]}>
+                  <View style={styles.add}>
+                    <Image source={plusIcon} />
+                  </View>
+                </Touchable>
+              )}
               {checkins.map((checkin) => (
                 <Touchable
                   onPress={() => onPressCheckin(checkin)}
@@ -80,6 +84,9 @@ export default memo(
 
 interface Props {
   participation: Participation
+  progress: number
+  canCheckIn: boolean
   checkins: Checkin[]
   onPressCheckin(checkin: Checkin): void
+  onPressAdd(): void
 }

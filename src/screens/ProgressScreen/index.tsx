@@ -62,6 +62,7 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
                 name: Screens.participationScreen,
                 passProps: {
                   participation,
+                  fetchProgress: fetchData,
                 },
               },
             },
