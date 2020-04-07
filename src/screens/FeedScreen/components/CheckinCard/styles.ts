@@ -65,4 +65,8 @@ export default StyleSheet.create({
     fontFamily: FontFamily.medium,
     fontSize: 24,
   },
+
+  fromNow: {
+    color: '#7D7D7D',
+  },
 })

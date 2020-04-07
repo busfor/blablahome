@@ -62,4 +62,5 @@ export interface Checkin {
   progress: number
   likes: number
   participation: Participation
+  inserted_at: string
 }

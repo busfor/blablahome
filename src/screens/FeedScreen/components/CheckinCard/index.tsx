@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { memo, useState } from 'react'
 import { Image, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
@@ -11,12 +12,14 @@ import styles from './styles'
 
 export default memo(({ checkin, onPressActivity }: Props) => {
   const [visible, setVisible] = useState(false)
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <FastImage style={styles.avatar} source={{ uri: getProfilePictureUrl(checkin.participation.user.user_id) }} />
         <Text style={styles.username}>{checkin.participation.user.name}</Text>
         <Text> has updated progress</Text>
+        <Text style={styles.fromNow}> {moment(checkin.inserted_at).fromNow(true)}</Text>
       </View>
       <Touchable style={styles.activity} onPress={() => onPressActivity(checkin.participation.activity)}>
         <Text style={styles.activityText}>
