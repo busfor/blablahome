@@ -8,6 +8,7 @@ export default StyleSheet.create({
     padding: 20,
     marginHorizontal: -20,
     marginTop: -20,
+    marginBottom: 20,
     backgroundColor: colors.white,
   },
 
