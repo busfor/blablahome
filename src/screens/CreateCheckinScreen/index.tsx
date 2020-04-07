@@ -1,22 +1,22 @@
-import React, { useCallback, useState, useMemo } from 'react'
-import { SafeAreaView, View, Platform, Alert, Text } from 'react-native'
-import { Options, Layout } from 'react-native-navigation'
-import { useNavigationButtonPress } from 'react-native-navigation-hooks'
-import { Image as ImagePickerImage } from 'react-native-image-crop-picker'
-import { useSelector } from 'react-redux'
+import React, { useCallback, useMemo, useState } from 'react'
+import { Alert, Platform, SafeAreaView, Text, View } from 'react-native'
 import BackgroundUpload, { CompletedData, MultipartUploadOptions, ProgressData } from 'react-native-background-upload'
 import { AccessToken } from 'react-native-fbsdk'
+import { Image as ImagePickerImage } from 'react-native-image-crop-picker'
+import { Layout, Options } from 'react-native-navigation'
+import { useNavigationButtonPress } from 'react-native-navigation-hooks'
+import { useSelector } from 'react-redux'
 
-import { endpoints } from '../../Api'
-import { AppNavigationProps, AppNavigation } from '../../navigation'
-import { KeyboardView, Button } from '../../component'
 import { Screens } from '..'
+import { endpoints } from '../../Api'
+import { Button, KeyboardView } from '../../component'
+import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { RootState } from '../../redux/reducers'
 
-import styles from './styles'
-import { CreateCheckinScreenPassProps, CreateCheckinStep } from './types'
 import Field from './components/Field'
 import Upload from './components/Upload'
+import styles from './styles'
+import { CreateCheckinScreenPassProps, CreateCheckinStep } from './types'
 
 const BACK_BUTTON_ID = 'back_button'
 const CANCEL_BUTTON_ID = 'cancel_button'
@@ -62,7 +62,7 @@ const CreateCheckinScreen = ({
   )
 
   const submit = useCallback(async () => {
-    if (!authorized || !description.length || selectedImage == null) {
+    if (!authorized || selectedImage == null) {
       return
     }
 
@@ -112,11 +112,7 @@ const CreateCheckinScreen = ({
   const onPressSubmit = useCallback(() => {
     switch (step) {
       case CreateCheckinStep.description:
-        if (description.length) {
-          submit()
-        } else {
-          showError('Please enter a valid description')
-        }
+        submit()
         break
 
       case CreateCheckinStep.media:
@@ -146,7 +142,10 @@ const CreateCheckinScreen = ({
               {step === CreateCheckinStep.media && <Upload {...{ selectedImage, setSelectedImage }} />}
             </View>
             <View style={styles.buttonContainer}>
-              <Button onPress={onPressSubmit} title='Next' />
+              <Button
+                onPress={onPressSubmit}
+                title={step === CreateCheckinStep.description && description.length === 0 ? 'Skip' : 'Next'}
+              />
             </View>
           </>
         )}

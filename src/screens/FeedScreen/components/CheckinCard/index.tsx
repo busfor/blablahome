@@ -26,11 +26,14 @@ export default memo(({ checkin, onPressActivity }: Props) => {
           {checkin.participation.activity.name} {checkin.progress}/{checkin.participation.activity.days}
         </Text>
       </Touchable>
-      <Text style={styles.message}>
-        <Text style={styles.quote}>“ </Text>
-        {checkin.message}
-        <Text style={styles.quote}> ”</Text>
-      </Text>
+      {checkin.message && (
+        <Text style={styles.message}>
+          <Text style={styles.quote}>“ </Text>
+          {checkin.message}
+          <Text style={styles.quote}> ”</Text>
+        </Text>
+      )}
+
       {checkin.photo && (
         <View style={styles.photos}>
           <Touchable onPress={() => setVisible(true)} style={styles.photoContainer}>
