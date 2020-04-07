@@ -3,6 +3,7 @@ import { Image as ImagePickerImage } from 'react-native-image-crop-picker'
 import { Participation } from '../../AppPropTypes'
 
 export enum CreateCheckinStep {
+  participation,
   description,
   media,
 }

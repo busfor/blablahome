@@ -10,6 +10,7 @@ import { fetchActivities } from '../../Api'
 import { Activity } from '../../AppPropTypes'
 import { CreateActivityStep } from '../CreateActivityScreen/types'
 import { RootState } from '../../redux/reducers'
+import { CreateCheckinStep } from '../CreateCheckinScreen/types'
 
 import Presenter from './presenter'
 
@@ -31,7 +32,10 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
             children: [
               {
                 component: {
-                  name: Screens.createActivityScreen,
+                  name: Screens.createCheckinScreen,
+                  passProps: {
+                    step: CreateCheckinStep.participation,
+                  }
                 },
               },
             ],

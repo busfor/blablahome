@@ -14,6 +14,7 @@ import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { RootState } from '../../redux/reducers'
 
 import Field from './components/Field'
+import Participations from './components/Participations'
 import Upload from './components/Upload'
 import styles from './styles'
 import { CreateCheckinScreenPassProps, CreateCheckinStep } from './types'
@@ -26,7 +27,7 @@ const showError = (message: string) => Alert.alert('Error', message)
 const CreateCheckinScreen = ({
   componentId,
   step,
-  participation,
+  participation: propParticipation,
   description: propDescription = '',
   selectedImage: propSelectedImage,
   fetchProgress,
@@ -35,6 +36,7 @@ const CreateCheckinScreen = ({
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, BACK_BUTTON_ID)
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, CANCEL_BUTTON_ID)
 
+  const [participation, setParticipation] = useState(propParticipation)
   const [description, setDescription] = useState(propDescription || '')
   const [selectedImage, setSelectedImage] = useState<ImagePickerImage | null>(propSelectedImage || null)
   const [uploading, setUploading] = useState(false)
@@ -63,7 +65,7 @@ const CreateCheckinScreen = ({
       }
       AppNavigation.push(componentId, layout)
     },
-    [componentId, description, selectedImage, fetchProgress]
+    [componentId, description, selectedImage, fetchProgress, participation]
   )
 
   const submit = useCallback(async () => {
@@ -119,16 +121,16 @@ const CreateCheckinScreen = ({
 
   const onPressSubmit = useCallback(() => {
     switch (step) {
-      case CreateCheckinStep.description:
-        submit()
-        break
-
       case CreateCheckinStep.media:
         if (selectedImage !== null) {
           openNextStep(CreateCheckinStep.description)
         } else {
           showError('Please select a picture')
         }
+        break
+
+      case CreateCheckinStep.description:
+        submit()
         break
     }
   }, [description, selectedImage, step, openNextStep, submit])
@@ -139,6 +141,14 @@ const CreateCheckinScreen = ({
         {!uploading && (
           <>
             <View style={styles.content}>
+              {step === CreateCheckinStep.participation && (
+                <Participations
+                  openNextStep={openNextStep}
+                  setParticipation={setParticipation}
+                  componentId={componentId}
+                />
+              )}
+              {step === CreateCheckinStep.media && <Upload {...{ selectedImage, setSelectedImage }} />}
               {step === CreateCheckinStep.description && (
                 <Field
                   label='Description'
@@ -147,14 +157,15 @@ const CreateCheckinScreen = ({
                   onChangeText={setDescription}
                 />
               )}
-              {step === CreateCheckinStep.media && <Upload {...{ selectedImage, setSelectedImage }} />}
             </View>
-            <View style={styles.buttonContainer}>
-              <Button
-                onPress={onPressSubmit}
-                title={step === CreateCheckinStep.description && description.length === 0 ? 'Skip' : 'Next'}
-              />
-            </View>
+            {step !== CreateCheckinStep.participation && (
+              <View style={styles.buttonContainer}>
+                <Button
+                  onPress={onPressSubmit}
+                  title={step === CreateCheckinStep.description && description.length === 0 ? 'Skip' : 'Next'}
+                />
+              </View>
+            )}
           </>
         )}
         {uploading && (
