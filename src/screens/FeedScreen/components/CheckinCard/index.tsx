@@ -17,9 +17,14 @@ export default memo(({ checkin, onPressActivity }: Props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <FastImage style={styles.avatar} source={{ uri: getProfilePictureUrl(checkin.participation.user.user_id) }} />
-        <Text style={styles.username}>{checkin.participation.user.name}</Text>
-        <Text> has updated progress</Text>
-        <Text style={styles.fromNow}> {moment(checkin.inserted_at).fromNow(true)}</Text>
+
+        <Text style={styles.text}>
+          <Text style={styles.username}>{checkin.participation.user.name}</Text> has updated progress
+          <Text style={styles.fromNow}>
+            {'\n'}
+            {moment(checkin.inserted_at).fromNow(true)} ago
+          </Text>
+        </Text>
       </View>
       <Touchable style={styles.activity} onPress={() => onPressActivity(checkin.participation.activity)}>
         <Text style={styles.activityText}>

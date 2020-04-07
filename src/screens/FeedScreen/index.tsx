@@ -66,9 +66,7 @@ const FeedScreen = ({ componentId }: AppNavigationProps) => {
 
 FeedScreen.options = (): Options => ({
   topBar: {
-    title: {
-      text: 'Feed',
-    },
+    visible: false,
   },
 })
 

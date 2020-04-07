@@ -20,10 +20,15 @@ export default StyleSheet.create({
     backgroundColor: colors.gray,
   },
 
+  text: {
+    flex: 1,
+
+    marginLeft: 12,
+  },
+
   username: {
     fontSize: 16,
     color: colors.black,
-    marginLeft: 12,
     fontFamily: FontFamily.regular,
   },
 
