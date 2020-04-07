@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation'
 
 import { registerScreens } from './screens/register'
 import { Screens } from './screens'
-import { feedIcon, activitiesIcon, progressIcon, profileIcon } from './images'
+import { feedIcon, activitiesIcon, progressIcon, profileIcon, checkinIcon } from './images'
 import { FontFamily } from './constants/fonts'
 import colors from './colors'
 
@@ -65,6 +65,7 @@ Navigation.events().registerAppLaunchedListener(() => {
               },
             },
           },
+
           {
             stack: {
               children: [
@@ -82,6 +83,25 @@ Navigation.events().registerAppLaunchedListener(() => {
               },
             },
           },
+
+          {
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: Screens.createCheckinScreen,
+                  },
+                },
+              ],
+              options: {
+                bottomTab: {
+                  text: 'Check-in',
+                  icon: checkinIcon,
+                },
+              },
+            },
+          },
+
           {
             stack: {
               children: [
@@ -99,6 +119,7 @@ Navigation.events().registerAppLaunchedListener(() => {
               },
             },
           },
+
           {
             stack: {
               children: [
