@@ -1,6 +1,6 @@
 import moment from 'moment'
 import React, { memo, useState } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import PhotoView from '@merryjs/photo-viewer'
 
@@ -35,9 +35,7 @@ export default memo(({ checkin, onPressCheckin }: Props) => {
 
       {checkin.photo && (
         <View style={styles.photos}>
-          <View style={styles.photoContainer}>
-            <Image style={styles.photo} source={{ uri: checkin.photo }} />
-          </View>
+          <FastImage style={styles.photo} source={{ uri: checkin.photo }} />
           <PhotoView
             visible={visible}
             onDismiss={() => setVisible(false)}

@@ -40,7 +40,22 @@ const ParticipationScreen = ({
     []
   )
 
-  const onPressCheckin = useCallback((checkin: Checkin) => alert(JSON.stringify(checkin)), [])
+  const onPressCheckin = useCallback((checkin: Checkin) => {
+    AppNavigation.showModal({
+      stack: {
+        children: [
+          {
+            component: {
+              name: Screens.checkinDetailsScreen,
+              passProps: {
+                checkin,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }, [])
 
   const onPressAdd = useCallback(() => {
     AppNavigation.showModal({
