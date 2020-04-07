@@ -86,17 +86,12 @@ Navigation.events().registerAppLaunchedListener(() => {
 
           {
             stack: {
-              children: [
-                {
-                  component: {
-                    name: Screens.createCheckinScreen,
-                  },
-                },
-              ],
+              children: [],
               options: {
                 bottomTab: {
                   text: 'Check-in',
                   icon: checkinIcon,
+                  selectTabOnPress: false,
                 },
               },
             },

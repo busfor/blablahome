@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Options } from 'react-native-navigation'
+import { Options, Navigation } from 'react-native-navigation'
 import { useNavigationButtonPress, useNavigationComponentDidAppear } from 'react-native-navigation-hooks'
 import { Alert } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -24,6 +24,22 @@ const ActivitiesScreen = ({ componentId }: AppNavigationProps) => {
 
   useEffect(() => {
     fetchData()
+    const bottomTabPressedListener = Navigation.events().registerBottomTabPressedListener((event) => {
+      if (event.tabIndex === 2) {
+        AppNavigation.showModal({
+          stack: {
+            children: [
+              {
+                component: {
+                  name: Screens.createActivityScreen,
+                },
+              },
+            ],
+          },
+        })
+      }
+    })
+    return () => bottomTabPressedListener.remove()
   }, [])
 
   const fetchData = useCallback(() => {
