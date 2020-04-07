@@ -8,4 +8,5 @@ export enum Screens {
   createActivityScreen = 'createActivityScreen',
   createCheckinScreen = 'createCheckinScreen',
   checkinDetailsScreen = 'checkinDetailsScreen',
+  participationScreen = 'participationScreen',
 }

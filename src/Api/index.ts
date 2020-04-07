@@ -12,6 +12,7 @@ export const endpoints = {
   activityParticipations: `${BASE_API_URL}/activities/%ACTIVITY_ID%/participations`,
   userParticipations: `${BASE_API_URL}/users/%USER_ID%/participations`,
   checkins: `${BASE_API_URL}/checkins`,
+  participationCheckins: `${BASE_API_URL}/participations/%PARTICIPATION_ID%/checkins`,
 }
 
 /**
@@ -41,6 +42,9 @@ export const fetchParticipationsForUser = (userId: string) =>
  */
 export const fetchParticipations = (activityId: string) =>
   getRequest<Participation[]>(endpoints.activityParticipations.replace('%ACTIVITY_ID%', activityId), {})
+
+export const fetchParticipationCheckins = (participaionId: string) =>
+  getRequest<Checkin[]>(endpoints.participationCheckins.replace('%PARTICIPATION_ID%', participaionId), {})
 
 /**
  * Join to the activity
