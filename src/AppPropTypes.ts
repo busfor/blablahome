@@ -31,14 +31,6 @@ export interface Comment {
   body: string
 }
 
-export interface Participation {
-  id: string
-  progress: number
-  completed_at: string | null
-  user: User
-  activity: Activity
-}
-
 export type EventStatus = 'started' | 'progressing' | 'done'
 
 export interface Event {

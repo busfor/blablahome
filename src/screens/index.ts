@@ -7,4 +7,5 @@ export enum Screens {
   progressScreen = 'ProgressScreen',
   createActivityScreen = 'createActivityScreen',
   createCheckinScreen = 'createCheckinScreen',
+  checkinScreen = 'checkinScreen',
 }

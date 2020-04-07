@@ -4,17 +4,17 @@ import { Image, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import PhotoView from '@merryjs/photo-viewer'
 
-import { Activity, Checkin } from '../../../../AppPropTypes'
+import { Checkin } from '../../../../AppPropTypes'
 import { getProfilePictureUrl } from '../../../../utils'
 import { Touchable } from '../../../../component'
 
 import styles from './styles'
 
-export default memo(({ checkin, onPressActivity }: Props) => {
+export default memo(({ checkin, onPressCheckin }: Props) => {
   const [visible, setVisible] = useState(false)
 
   return (
-    <View style={styles.container}>
+    <Touchable style={styles.container} onPress={() => onPressCheckin(checkin)}>
       <View style={styles.header}>
         <FastImage style={styles.avatar} source={{ uri: getProfilePictureUrl(checkin.participation.user.user_id) }} />
 
@@ -26,24 +26,18 @@ export default memo(({ checkin, onPressActivity }: Props) => {
           </Text>
         </Text>
       </View>
-      <Touchable style={styles.activity} onPress={() => onPressActivity(checkin.participation.activity)}>
+      <View style={styles.activity}>
         <Text style={styles.activityText}>
           {checkin.participation.activity.name} {checkin.progress}/{checkin.participation.activity.days}
         </Text>
-      </Touchable>
-      {checkin.message && (
-        <Text style={styles.message}>
-          <Text style={styles.quote}>“ </Text>
-          {checkin.message}
-          <Text style={styles.quote}> ”</Text>
-        </Text>
-      )}
+      </View>
+      {checkin.message && <Text style={styles.message}>{checkin.message}</Text>}
 
       {checkin.photo && (
         <View style={styles.photos}>
-          <Touchable onPress={() => setVisible(true)} style={styles.photoContainer}>
+          <View style={styles.photoContainer}>
             <Image style={styles.photo} source={{ uri: checkin.photo }} />
-          </Touchable>
+          </View>
           <PhotoView
             visible={visible}
             onDismiss={() => setVisible(false)}
@@ -52,11 +46,11 @@ export default memo(({ checkin, onPressActivity }: Props) => {
           />
         </View>
       )}
-    </View>
+    </Touchable>
   )
 })
 
 interface Props {
   checkin: Checkin
-  onPressActivity(activity: Activity): void
+  onPressCheckin(checkin: Checkin): void
 }

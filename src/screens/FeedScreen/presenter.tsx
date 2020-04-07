@@ -1,12 +1,12 @@
 import React, { memo } from 'react'
 import { RefreshControl, ScrollView, SafeAreaView, Text } from 'react-native'
 
-import { Activity, Checkin } from '../../AppPropTypes'
+import { Checkin } from '../../AppPropTypes'
 
 import styles from './styles'
 import CheckinCard from './components/CheckinCard'
 
-export default memo(({ checkins, handleRefresh, onPressActivity, loading }: Props) => (
+export default memo(({ checkins, handleRefresh, onPressCheckin, loading }: Props) => (
   <SafeAreaView style={styles.safeArea}>
     <Text style={styles.title}>Feed</Text>
     <ScrollView
@@ -14,7 +14,7 @@ export default memo(({ checkins, handleRefresh, onPressActivity, loading }: Prop
       refreshControl={<RefreshControl refreshing={loading} onRefresh={handleRefresh} tintColor={'black'} />}
     >
       {checkins.map((checkin) => (
-        <CheckinCard checkin={checkin} key={checkin.id} onPressActivity={onPressActivity} />
+        <CheckinCard checkin={checkin} key={checkin.id} onPressCheckin={onPressCheckin} />
       ))}
     </ScrollView>
   </SafeAreaView>
@@ -24,5 +24,5 @@ interface Props {
   checkins: Checkin[]
   handleRefresh(): void
   loading: boolean
-  onPressActivity(activity: Activity): void
+  onPressCheckin(checkin: Checkin): void
 }

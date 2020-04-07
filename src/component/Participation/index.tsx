@@ -8,7 +8,7 @@ import colors from '../../colors'
 
 import styles from './styles'
 
-export default memo(({ participation, isLast }: Props) => (
+export default memo(({ participation, isLast = false }: Props) => (
   <View style={[styles.participant, isLast && styles.bottomSpace]}>
     <User user={participation.user} />
     <CircularProgress
@@ -33,6 +33,6 @@ export default memo(({ participation, isLast }: Props) => (
 ))
 
 interface Props {
-  isLast: boolean
+  isLast?: boolean
   participation: ParticipationType
 }

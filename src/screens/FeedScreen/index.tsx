@@ -3,7 +3,7 @@ import { Options } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks'
 
 import { fetchCheckins } from '../../Api'
-import { Activity, Checkin } from '../../AppPropTypes'
+import { Checkin } from '../../AppPropTypes'
 import useHideSplashScreen from '../../hooks/useHideSplashScreen'
 import { AppNavigation, AppNavigationProps } from '../../navigation'
 import { Screens } from '../index'
@@ -37,15 +37,15 @@ const FeedScreen = ({ componentId }: AppNavigationProps) => {
     fetchData()
   }, [fetchData])
 
-  const onPressActivity = useCallback((activity: Activity) => {
+  const onPressCheckin = useCallback((checkin: Checkin) => {
     AppNavigation.showModal({
       stack: {
         children: [
           {
             component: {
-              name: Screens.ActivityDetailsScreen,
+              name: Screens.checkinScreen,
               passProps: {
-                activity,
+                checkin,
               },
             },
           },
@@ -61,7 +61,7 @@ const FeedScreen = ({ componentId }: AppNavigationProps) => {
     firstAppear.current = false
   }, componentId)
 
-  return <Presenter {...{ checkins, handleRefresh, loading, onPressActivity }} />
+  return <Presenter {...{ checkins, handleRefresh, loading, onPressCheckin }} />
 }
 
 FeedScreen.options = (): Options => ({
