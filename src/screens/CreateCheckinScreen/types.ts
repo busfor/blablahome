@@ -9,6 +9,7 @@ export enum CreateCheckinStep {
 
 export interface CreateCheckinScreenPassProps {
   step: CreateCheckinStep
+  componentIdArray?: string[]
   title?: string
   description?: string
   selectedImage?: ImagePickerImage | null

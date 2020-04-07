@@ -24,7 +24,7 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
   const profile = useSelector((s: RootState) => s.auth.user)
 
   useEffect(() => {
-    fetchData()
+    handleRefresh()
   }, [])
 
   const fetchData = useCallback(async () => {
@@ -59,9 +59,9 @@ const ProgressScreen = ({ componentId }: AppNavigationProps) => {
           children: [
             {
               component: {
-                name: Screens.ActivityDetailsScreen,
+                name: Screens.participationScreen,
                 passProps: {
-                  activity: participation.activity,
+                  participation,
                   fetchProgress: fetchData,
                 },
               },

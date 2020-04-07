@@ -11,8 +11,8 @@ export default memo(({ inProgress, completed, failed, loading, handleRefresh, ha
     <Text style={styles.title}>Progress</Text>
     <ScrollView refreshControl={<RefreshControl refreshing={loading} onRefresh={handleRefresh} tintColor={'black'} />}>
       <ProgressSection participations={inProgress} title='STARTED' handleAcivityPress={handleAcivityPress} />
-      <ProgressSection participations={completed} title='COMPLETED' />
-      <ProgressSection participations={failed} title='FAILED' />
+      <ProgressSection participations={completed} title='COMPLETED' handleAcivityPress={handleAcivityPress} />
+      <ProgressSection participations={failed} title='FAILED' handleAcivityPress={handleAcivityPress} />
     </ScrollView>
   </SafeAreaView>
 ))

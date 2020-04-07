@@ -47,15 +47,10 @@ export default StyleSheet.create({
     paddingLeft: 39,
   },
 
-  photoContainer: {
-    width: 100,
-    height: 100,
-    borderRadius: 10,
-  },
-
   photo: {
     width: 100,
     height: 100,
+    borderRadius: 10,
   },
 
   message: {

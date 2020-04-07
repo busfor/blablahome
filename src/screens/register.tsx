@@ -17,6 +17,7 @@ import ProgressScreen from './ProgressScreen'
 import CreateActivityScreen from './CreateActivityScreen'
 import ActivityParticipationsScreen from './ActivityParticipationsScreen'
 import CreateCheckinScreen from './CreateCheckinScreen'
+import ParticipationScreen from './ParticipationScreen'
 
 const screens = {
   feedScreen: {
@@ -54,6 +55,10 @@ const screens = {
   checkinScreen: {
     name: Screens.checkinDetailsScreen,
     component: CheckinDetailsScreen,
+  },
+  participationScreen: {
+    name: Screens.participationScreen,
+    component: ParticipationScreen,
   },
 }
 

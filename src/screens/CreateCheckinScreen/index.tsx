@@ -30,6 +30,7 @@ const CreateCheckinScreen = ({
   description: propDescription = '',
   selectedImage: propSelectedImage,
   fetchProgress,
+  componentIdArray,
 }: AppNavigationProps & CreateCheckinScreenPassProps) => {
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, BACK_BUTTON_ID)
   useNavigationButtonPress(() => AppNavigation.dismissModal(componentId), componentId, CANCEL_BUTTON_ID)
@@ -43,6 +44,8 @@ const CreateCheckinScreen = ({
 
   const keyboardViewEnabled = useMemo(() => step === CreateCheckinStep.description, [step])
 
+  const componentIds = useMemo(() => [...(componentIdArray || []), componentId], [componentIdArray, componentId])
+
   const openNextStep = useCallback(
     (nextStep: CreateCheckinStep) => {
       const layout: Layout<CreateCheckinScreenPassProps> = {
@@ -53,12 +56,14 @@ const CreateCheckinScreen = ({
             participation,
             description,
             selectedImage,
+            fetchProgress,
+            componentIdArray: componentIds,
           },
         },
       }
       AppNavigation.push(componentId, layout)
     },
-    [componentId, description, selectedImage]
+    [componentId, description, selectedImage, fetchProgress]
   )
 
   const submit = useCallback(async () => {
@@ -99,7 +104,10 @@ const CreateCheckinScreen = ({
           if (fetchProgress) {
             fetchProgress()
           }
-          return AppNavigation.dismissAllModals()
+          componentIds.reverse().forEach((id) => {
+            AppNavigation.dismissModal(id)
+          })
+          return
         } else {
           showError('Something went wrong please try again later')
         }
