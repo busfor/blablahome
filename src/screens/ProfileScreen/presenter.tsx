@@ -14,11 +14,7 @@ const formatName = (name: string) => name.replace(' ', '\n')
 
 export default memo(({ user, handleLogin, handleLogout }: Props) => {
   if (!user.id) {
-    return (
-      <SafeAreaView style={styles.safeArea}>
-        <NoInfo buttonText={'Login'} text={'To view your progress please log in'} onPress={handleLogin} />
-      </SafeAreaView>
-    )
+    return <NoInfo buttonText={'Login'} text={'To view your progress please log in'} onPress={handleLogin} />
   }
   return (
     <SafeAreaView style={styles.safeArea}>

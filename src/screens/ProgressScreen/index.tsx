@@ -11,7 +11,6 @@ import { RootState } from '../../redux/reducers'
 import { fetchParticipationsForUser, requestAuth } from '../../Api'
 import colors from '../../colors'
 import { AppNavigation, AppNavigationProps } from '../../navigation'
-import { CreateCheckinStep } from '../CreateCheckinScreen/types'
 import { Screens } from '..'
 import NoInfo from '../../component/NoInfo'
 

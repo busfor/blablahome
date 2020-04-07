@@ -18,9 +18,11 @@ export default memo(
     cover,
     canParticipateIn,
     canCheckIn,
+    canAct,
     onPressSeeAll,
     onPressTakePart,
     onPressCheckIn,
+    handleLogin,
   }: Props) => (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -57,14 +59,15 @@ export default memo(
             />
           ))}
           {participations.length === 0 && <Text style={styles.emptyParticipations}>You might be the first!</Text>}
-          {(canParticipateIn || canCheckIn) && (
-            <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer}>
+            {canAct && (canParticipateIn || canCheckIn) && (
               <Button
                 onPress={canCheckIn ? onPressCheckIn : onPressTakePart}
                 title={canCheckIn ? 'Check in' : 'Take part'}
               />
-            </View>
-          )}
+            )}
+            {!canAct && <Button onPress={handleLogin} title={'Login'} />}
+          </View>
         </SafeAreaView>
       </ScrollView>
     </View>
@@ -80,7 +83,9 @@ interface Props {
   cover: string
   canParticipateIn: boolean
   canCheckIn: boolean
+  canAct: boolean
   onPressSeeAll(): void
   onPressTakePart(): void
   onPressCheckIn(): void
+  handleLogin(): void
 }
