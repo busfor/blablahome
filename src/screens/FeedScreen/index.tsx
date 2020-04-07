@@ -43,7 +43,7 @@ const FeedScreen = ({ componentId }: AppNavigationProps) => {
         children: [
           {
             component: {
-              name: Screens.checkinScreen,
+              name: Screens.checkinDetailsScreen,
               passProps: {
                 checkin,
               },

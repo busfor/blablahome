@@ -8,7 +8,7 @@ import { store, persistor } from '../redux/store'
 
 import { Screens } from '.'
 
-import CheckinScreen from './CheckinScreen'
+import CheckinDetailsScreen from './CheckinDetailsScreen'
 import FeedScreen from './FeedScreen'
 import ActivitiesScreen from './ActivitiesScreen'
 import ProfileScreen from './ProfileScreen'
@@ -52,8 +52,8 @@ const screens = {
     component: CreateCheckinScreen,
   },
   checkinScreen: {
-    name: Screens.checkinScreen,
-    component: CheckinScreen,
+    name: Screens.checkinDetailsScreen,
+    component: CheckinDetailsScreen,
   },
 }
 

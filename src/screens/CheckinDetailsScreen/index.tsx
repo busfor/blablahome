@@ -7,7 +7,7 @@ import { AppNavigationProps, AppNavigation, modalBackButton } from '../../naviga
 
 import Presenter from './presenter'
 
-const CheckinScreen = ({ componentId, checkin }: AppNavigationProps & Props) => {
+const CheckinDetailsScreen = ({ componentId, checkin }: AppNavigationProps & Props) => {
   useNavigationButtonPress(
     () => {
       AppNavigation.dismissModal(componentId)
@@ -19,7 +19,7 @@ const CheckinScreen = ({ componentId, checkin }: AppNavigationProps & Props) => 
   return <Presenter {...checkin} />
 }
 
-CheckinScreen.options = (): Options => ({
+CheckinDetailsScreen.options = (): Options => ({
   statusBar: {
     drawBehind: true,
     backgroundColor: 'transparent',
@@ -40,4 +40,4 @@ interface Props {
   fetchProgress?: () => void
 }
 
-export default CheckinScreen
+export default CheckinDetailsScreen
