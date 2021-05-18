@@ -21,7 +21,7 @@
     "react": "16.11.0",
     "react-native": "0.62.1",
     "react-native-background-upload": "^5.5.0",
-    "react-native-fast-image": "^8.1.5",
+    "react-native-fast-image": "^8.3.0",
     "react-native-fbsdk": "^1.1.2",
     "react-native-image-crop-picker": "^0.28.0",
     "react-native-navigation": "^6.4.0",
